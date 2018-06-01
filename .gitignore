@@ -63,5 +63,4 @@ typings/
 .next
 
 /config.js
-.idea/inspectionProfiles/
-.idea
+/.idea
