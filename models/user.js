@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 import bcrypt from 'bcrypt-nodejs';
 
-
+// Basic user model
 const userSchema = new Schema({
     email: {type: String, unique: true, lowercase: true},
     password: String
@@ -31,6 +31,7 @@ userSchema.pre("save", function(next) {
     });
 });
 
+// Helper method implemented within routes
 userSchema.methods.comparePassword = function(candidatePassword, callback) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) { return callback(err); }

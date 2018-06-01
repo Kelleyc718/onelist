@@ -5,7 +5,7 @@ import {Strategy} from "passport-jwt";
 import {ExtractJwt} from "passport-jwt";
 import LocalStategy from "passport-local";
 
-
+// Local strategy used to find a user and authenticate login
 const localOptions = { usernameField: "email" };
 const localLogin = new LocalStategy(localOptions, (email, password, done) => {
     User.findOne( { email: email}, (err, user) => {
@@ -21,7 +21,8 @@ const localLogin = new LocalStategy(localOptions, (email, password, done) => {
         });
     });
 });
-// JWT Setup
+
+// JWT Setup, instructs to check header for user's token
 const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromHeader("authorization"),
     secretOrKey: config.secret

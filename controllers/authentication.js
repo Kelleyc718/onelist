@@ -2,17 +2,18 @@ import User from "../models/user";
 import jwt from "jwt-simple";
 import config from "../config";
 
-
-
+// Creates a authorization token allowing user to visit protected routes
 const tokenForUser = (user) => {
     let timestamp = new Date().getTime();
     return jwt.encode({sub: user.id, iat: timestamp}, config.secret);
 };
 
+// Checks the credentials and provides token upon valid signin
 exports.signin = (req, res, next) => {
     res.send({token: tokenForUser(req.user)});
 };
 
+// Basic signup requiring user email and password TODO: Expand on this
 exports.signup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
