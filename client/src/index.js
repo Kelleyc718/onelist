@@ -7,23 +7,33 @@ import thunk from "redux-thunk";
 
 import reducers from "./reducers";
 import App from "./components/App";
-import Welcome from "./components/Welcome";
-import Signup from "./components/auth/Signup";
+import Landing from "./components/Landing";
+import Register from "./components/auth/Register";
+import Feature from "./components/Feature";
+import Logout from "./components/auth/Logout";
+import Login from "./components/auth/Login";
+
 
 const store = createStore(
     reducers,
-    {},
+    {
+        // Token stored in browser's local storage to give Redux state to reference after signup action
+        auth: {authenticated: localStorage.getItem("token")}
+    },
     applyMiddleware(thunk)
 );
 
 ReactDom.render(
     <Provider store={store}>
-    <BrowserRouter>
-        <App>
-            <Route path="/" exact component={Welcome} />
-            <Route path="/signup" component={Signup}/>
-        </App>
-    </BrowserRouter>
+        <BrowserRouter>
+            <App>
+                <Route path="/" exact component={Landing}/>
+                <Route path="/register" component={Register}/>
+                <Route path="/feature" component={Feature}/>
+                <Route path="/logout" component={Logout}/>
+                <Route path="/login" component={Login}/>
+            </App>
+        </BrowserRouter>
     </Provider>,
     document.querySelector("#root")
 );

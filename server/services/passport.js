@@ -1,13 +1,13 @@
 import passport from "passport";
 import User from "../models/user";
-import config from "../config";
 import {Strategy} from "passport-jwt";
 import {ExtractJwt} from "passport-jwt";
-import LocalStategy from "passport-local";
+import LocalStrategy from "passport-local";
+require("dotenv").config();
 
 // Local strategy used to find a user and authenticate login
 const localOptions = { usernameField: "email" };
-const localLogin = new LocalStategy(localOptions, (email, password, done) => {
+const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
     User.findOne( { email: email}, (err, user) => {
         if (err) { return done(err); }
         if (!user) { return done(null, false); }
@@ -25,7 +25,7 @@ const localLogin = new LocalStategy(localOptions, (email, password, done) => {
 // JWT Setup, instructs to check header for user's token
 const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromHeader("authorization"),
-    secretOrKey: config.secret
+    secretOrKey: process.env.APP_SECRET
 };
 
 // JWT Strategy

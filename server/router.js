@@ -1,4 +1,5 @@
 import Authentication from "./controllers/authentication";
+import passportService from "./services/passport";
 import passport from "passport";
 
 // Constants defined to protect routes

@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 // DB Setup
-mongoose.connect("mongodb://localhost/auth");
+mongoose.connect(process.env.MONGODB_URI || "http://localhost:27017");
 const app = express();
 
 // App Setup

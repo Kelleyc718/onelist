@@ -1,11 +1,15 @@
 import React from "react";
-import Header from "./Header";
+import Nav from "../components/Nav";
+import "../css/app.css";
 
 export default ({children}) => {
     return (
-        <div>
-            <Header/>
-            {children}
+        <div className="main-content">
+            <Nav className="nav-bar"/>
+            <div>
+                {children}
+            </div>
+
         </div>
     );
 }

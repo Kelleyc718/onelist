@@ -1,0 +1,41 @@
+form {
+    margin: auto;
+    border: 1px solid white;
+    font-family: 'Audiowide', 'cursive';
+    width: 50vw;
+    text-align: center;
+}
+
+label {
+    color: #fff;
+    display: block;
+    margin: 1em auto;
+}
+
+.login-button {
+    margin: 2em auto;
+    padding: 0.6em;
+    border-radius: 4px;
+    width: auto;
+    font-family: "Audiowide", "cursive";
+    background-image: linear-gradient(to right, #12aeeb, rgba(66, 153, 242, 0.38), rgba(126, 125, 232, 0.35), rgba(176, 87, 201, 0.36), rgba(209, 21, 150, 0.38));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cancel-button {
+    margin: 2em auto;
+    padding: 0.6em;
+    border-radius: 4px;
+    width: auto;
+    font-family: "Audiowide", "cursive";
+    background-image: linear-gradient(to right, #12aeeb, rgba(66, 153, 242, 0.38), rgba(126, 125, 232, 0.35), rgba(176, 87, 201, 0.36), rgba(209, 21, 150, 0.38));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+input {
+    width: 40vw;
+    height: 1.6em;
+    border-radius: 7px;
+}

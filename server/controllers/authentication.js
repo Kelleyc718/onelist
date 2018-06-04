@@ -18,10 +18,12 @@ exports.signup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
 
+    // If email or password are null, "422 Error" will be returned
     if (!email || !password) {
         return res.status(422).send({error: "Must enter an email AND password."});
     }
 
+    // If email is not found, user will be saved, otherwise, an error will populate.
     User.findOne({email: email}, (error, existingUser) => {
         if (error) {
             return next(error);
@@ -36,6 +38,7 @@ exports.signup = (req, res, next) => {
             password: password
         });
 
+        // On user save, either an error, or a new token will be returned.
         user.save((error) => {
             return (error) ? next(error) : res.json({token: tokenForUser(user)});
         });

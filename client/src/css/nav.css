@@ -1,0 +1,12 @@
+.nav-bar {
+    text-align: center;
+    height: 5vh;
+}
+
+.nav-bar a {
+    color: rgba(255, 255, 255, 0.65);
+    font-family: "Audiowide", "cursive";
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 10px;
+}
