@@ -10,7 +10,7 @@ import "../../css/register.css";
 class Register extends Component {
     onSubmit = formProps => {
         this.props.register(formProps, () => {
-            this.props.history.push("/feature");
+            this.props.history.push("/about");
         });
     };
 
@@ -18,7 +18,7 @@ class Register extends Component {
         const {handleSubmit} = this.props;
         return (
             <form className="register-form" onSubmit={handleSubmit(this.onSubmit)}>
-                <p className="register-p">Register today or sign-up for our mailing list!</p>
+                <p className="register-p">Register today or sign-up!</p>
                 <label className="register-label">Email</label>
                 <Field
                     className="register-field"
@@ -40,10 +40,8 @@ class Register extends Component {
                     {this.props.errorMessage}
                 </div>
                 <button className="register-button" type="submit">Register</button>
-                <Link to="/">
-                    <button className="register-button">
-                        Cancel
-                    </button>
+                <Link to="/" className="register-button">
+                    Cancel
                 </Link>
             </form>
         )
@@ -56,5 +54,5 @@ const mapStateToProps = state => {
 
 export default compose(
     connect(mapStateToProps, actions),
-    reduxForm({form: "signup"})
+    reduxForm({form: "register"})
 )(Register);

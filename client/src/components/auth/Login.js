@@ -10,7 +10,7 @@ import "../../css/login.css";
 class Login extends Component {
     onSubmit = formProps => {
         this.props.login(formProps, () => {
-            this.props.history.push("/feature");
+            this.props.history.push("/about");
         });
     };
 

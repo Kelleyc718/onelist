@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    font-family: "Exo", cursive;
+    color: white;
+}
+
+
+
+.v-title {
+    position: absolute;
+    top: 70px;
+    left: -3.25em;
+    line-height: 1;
+    letter-spacing: -.05em;
+    color: hsla(0,0%,73%,.8);
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+    transform: matrix(0, -1, 1, 0, 0, 0);
+}
+
+.miss {
+    margin: auto;
+}
+
+.blurb {
+    max-width: 50vw;
+    line-height: 2em;
+}
+
+.ms {
+    list-style: none;
+    position: relative;
+    padding: 1.6em;
+    margin: 5vh auto;
+}
