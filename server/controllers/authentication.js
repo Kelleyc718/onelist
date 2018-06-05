@@ -9,12 +9,12 @@ const tokenForUser = (user) => {
 };
 
 // Checks the credentials and provides token upon valid signin
-exports.signin = (req, res, next) => {
+exports.login = (req, res, next) => {
     res.send({token: tokenForUser(req.user)});
 };
 
-// Basic signup requiring user email and password TODO: Expand on this
-exports.signup = (req, res, next) => {
+// Basic register requiring user email and password TODO: Expand on this
+exports.register = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
 

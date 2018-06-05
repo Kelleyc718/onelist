@@ -5,9 +5,11 @@ import morgan from "morgan";
 import router from "./router";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
 
+dotenv.config();
 // DB Setup
-mongoose.connect(process.env.MONGODB_URI || "http://localhost:27017");
+mongoose.connect(process.env.MONGODB_URI);
 const app = express();
 
 // App Setup

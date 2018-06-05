@@ -3,7 +3,9 @@ import User from "../models/user";
 import {Strategy} from "passport-jwt";
 import {ExtractJwt} from "passport-jwt";
 import LocalStrategy from "passport-local";
-require("dotenv").config();
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // Local strategy used to find a user and authenticate login
 const localOptions = { usernameField: "email" };

@@ -1,4 +1,5 @@
 .title {
+    min-width:400px;
     margin: auto;
     position: relative;
     background-image: linear-gradient(to right, #12aeeb, rgba(66, 153, 242, 0.53), rgba(126, 125, 232, 0.49), rgba(176, 87, 201, 0.49), rgba(209, 21, 150, 0.38));
@@ -9,11 +10,12 @@
 }
 
 .title:after {
+    width: 265px;
     content: "";
     position: absolute;
     height: 2px;
-    bottom: -10px;
-    left: 5px;
-    right: 30px;
+    bottom: -5px;
+    left: 15px;
+    right: 5px;
     background-image: linear-gradient(to right, #12aeeb, rgba(66, 153, 242, 0.38), rgba(126, 125, 232, 0.35), rgba(176, 87, 201, 0.36), rgba(209, 21, 150, 0.38));
 }

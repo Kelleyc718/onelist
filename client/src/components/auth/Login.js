@@ -17,17 +17,19 @@ class Login extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-                    <label>Email</label>
+            <form className="login-form" onSubmit={handleSubmit(this.onSubmit)}>
+                    <label className="login-label">Email</label>
                     <Field
+                        className="login-field"
                         name="email"
                         type="text"
                         component="input"
                         autoComplete="email"
                     />
 
-                    <label>Password</label>
+                    <label className="login-label">Password</label>
                     <Field
+                        className="login-field"
                         name="password"
                         type="password"
                         component="input"

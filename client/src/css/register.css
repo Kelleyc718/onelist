@@ -1,32 +1,32 @@
-.login-form {
-    background-color: rgba(0, 0, 0, 0.51);
+.register-form {
+    background-color: rgba(0, 0, 0, 0.82);
     border-radius: 3px;
     color: white;
-    margin: 0 auto auto;
+    margin: auto;
     font-family: 'Audiowide', 'cursive';
     width: 45vw;
     text-align: center;
     border: 1px solid black;
 }
 
-.login-p, .login-label, .login-button {
+.register-p, .register-label, .register-button {
     background-image: linear-gradient(to right, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(221, 87, 246), rgba(209, 21, 150, 0.38));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.login-p {
+.register-p {
     color: #fff;
     padding: 1em;
 }
 
-.login-label {
+.register-label {
     color: #fff;
     display: block;
     margin: 1em auto;
 }
 
-.login-button {
+.register-button {
     font-size: 0.8em;
     border: 1px solid white;
     text-align: center;
@@ -42,7 +42,7 @@
     transition-duration: 0.4s;
 }
 
-.login-field {
+.register-field {
     width: 30vw;
     height: 1.6em;
     border-radius: 7px;

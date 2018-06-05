@@ -9,7 +9,7 @@ import reducers from "./reducers";
 import App from "./components/App";
 import Landing from "./components/Landing";
 import Register from "./components/auth/Register";
-import Feature from "./components/Feature";
+import About from "./components/About";
 import Logout from "./components/auth/Logout";
 import Login from "./components/auth/Login";
 
@@ -29,7 +29,7 @@ ReactDom.render(
             <App>
                 <Route path="/" exact component={Landing}/>
                 <Route path="/register" component={Register}/>
-                <Route path="/feature" component={Feature}/>
+                <Route path="/about" component={About}/>
                 <Route path="/logout" component={Logout}/>
                 <Route path="/login" component={Login}/>
             </App>

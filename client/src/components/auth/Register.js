@@ -2,42 +2,49 @@ import React, {Component} from "react";
 import {reduxForm, Field} from "redux-form";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {Link} from "react-router-dom";
 import * as actions from "../../actions";
+import "../../css/register.css";
 
 
 class Register extends Component {
     onSubmit = formProps => {
-        this.props.signup(formProps, () => {
+        this.props.register(formProps, () => {
             this.props.history.push("/feature");
         });
     };
 
     render() {
-        const { handleSubmit } = this.props;
+        const {handleSubmit} = this.props;
         return (
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-                <fieldset>
-                    <label>Email</label>
-                    <Field
-                        name="email"
-                        type="text"
-                        component="input"
-                        autoComplete="email"
-                        />
-                </fieldset>
-                <fieldset>
-                    <label>Password</label>
-                    <Field
-                        name="password"
-                        type="password"
-                        component="input"
-                        autoComplete="current-password"
-                    />
-                </fieldset>
+            <form className="register-form" onSubmit={handleSubmit(this.onSubmit)}>
+                <p className="register-p">Register today or sign-up for our mailing list!</p>
+                <label className="register-label">Email</label>
+                <Field
+                    className="register-field"
+                    name="email"
+                    type="text"
+                    component="input"
+                    autoComplete="email"
+                />
+                <label className="register-label">Password</label>
+                <Field
+                    className="register-field"
+                    name="password"
+                    type="password"
+                    component="input"
+                    autoComplete="current-password"
+                />
+
                 <div>
                     {this.props.errorMessage}
                 </div>
-                <button>Sign Up!</button>
+                <button className="register-button" type="submit">Register</button>
+                <Link to="/">
+                    <button className="register-button">
+                        Cancel
+                    </button>
+                </Link>
             </form>
         )
     }
