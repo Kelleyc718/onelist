@@ -10,7 +10,7 @@ import "../../css/login.css";
 class Login extends Component {
     onSubmit = formProps => {
         this.props.login(formProps, () => {
-            this.props.history.push("/about");
+            this.props.history.push("/playlist");
         });
     };
 
@@ -36,7 +36,7 @@ class Login extends Component {
                         autoComplete="none"
                     />
 
-                <div>
+                <div className="error">
                     {this.props.errorMessage}
                 </div>
 
@@ -53,5 +53,5 @@ const mapStateToProps = state => {
 
 export default compose(
     connect(mapStateToProps, actions),
-    reduxForm({form: "signin"})
+    reduxForm({form: "login"})
 )(Login);

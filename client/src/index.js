@@ -12,6 +12,7 @@ import Register from "./components/auth/Register";
 import About from "./components/About";
 import Logout from "./components/auth/Logout";
 import Login from "./components/auth/Login";
+import Playlist from "./components/playlist/Playlist";
 
 
 const store = createStore(
@@ -30,6 +31,7 @@ ReactDom.render(
                 <Route path="/" exact component={Landing}/>
                 <Route path="/register" component={Register}/>
                 <Route path="/about" component={About}/>
+                <Route path="/playlist" component={Playlist}/>
                 <Route path="/logout" component={Logout}/>
                 <Route path="/login" component={Login}/>
             </App>

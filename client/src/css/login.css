@@ -41,3 +41,8 @@
     height: 1.6em;
     border-radius: 7px;
 }
+
+.error {
+    padding: 1em;
+    color: red;
+}

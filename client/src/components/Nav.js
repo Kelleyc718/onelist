@@ -10,6 +10,7 @@ class Nav extends Component {
                 <div className="nav-links">
                     <Link to="/">Home</Link>
                     <Link to="/about">About Us</Link>
+                    <Link to="/playlist">Playlist</Link>
                     <Link to="/logout">Logout</Link>
                 </div>
             );
