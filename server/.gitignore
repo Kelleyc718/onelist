@@ -70,3 +70,4 @@ typings/
 .env
 .next
 /config.js
+/server/controllers/client_secret.json

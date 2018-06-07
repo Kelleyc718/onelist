@@ -39,13 +39,18 @@ export const logout = () => {
     };
 };
 
-export const playlist = (serviceProps, callback) => async dispatch => {
+export const playlist = (callback) => async dispatch => {
     try {
-        const response = await axios.get("http://localhost:3000/playlist", serviceProps);
+        const response = await axios.get("http://localhost:3000/playlist");
+        console.log(response);
 
-        dispatch({type: PLAY_LIST, payload: response.data.playlist});
+        dispatch({type: PLAY_LIST, payload: response.data.token});
+
+        // Sets users token after successful signup
+        // noinspection JSCheckFunctionSignatures
+        localStorage.setItem("token", response.data.token);
         callback();
     } catch (e) {
-        dispatch({type: PLAY_LIST_ERROR, payload: "Playlist could not be found."})
+        dispatch({type: PLAY_LIST_ERROR, payload: "Could not find playlist"})
     }
 };

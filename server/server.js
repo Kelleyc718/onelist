@@ -8,8 +8,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
-// DB Setup
+
+mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI);
+
+// DB Setup
+
 const app = express();
 
 // App Setup
@@ -27,3 +31,4 @@ server.listen(port);
 
 // Console check to provide feedback to user
 console.log("Server listening on " + port);
+

@@ -8,16 +8,24 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Local strategy used to find a user and authenticate login
-const localOptions = { usernameField: "email" };
+const localOptions = {usernameField: "email"};
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
-    User.findOne( { email: email}, (err, user) => {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
+    User.findOne({email: email}, (err, user) => {
+        if (err) {
+            return done(err);
+        }
+        if (!user) {
+            return done(null, false);
+        }
 
         user.comparePassword(password, (err, isMatch) => {
-            if (err) { return done(err); }
+            if (err) {
+                return done(err);
+            }
 
-            if (!isMatch) { return done(null, false); }
+            if (!isMatch) {
+                return done(null, false);
+            }
 
             return done(null, user);
         });
@@ -34,9 +42,9 @@ const jwtOptions = {
 // Checks if user exists with proper authentication
 const jwtLogin = new Strategy(jwtOptions, (payload, done) => {
     User.findById(payload.sub, (err, user) => {
-       return (err) ? done(err, false)
-           : (user) ? done(null, user)
-               : done(null, false);
+        return (err) ? done(err, false)
+            : (user) ? done(null, user)
+                : done(null, false);
     });
 });
 

@@ -1,8 +1,24 @@
-.nav-bar {
-    height: 3vh;
+.nav {
+    width: 100%;
+    list-style-type:none;
+    margin: auto;
+    padding:0;
+    position: absolute;
+}
+/*Create a horizontal list with spacing*/
+.nav-links>li {
+    height: 5vh;
+    display:inline-block;
+    margin: auto;
 }
 
-.nav-links {
+.nav-links>li:hover {
+    background-color: white;
+}
+
+
+.nav-bar {
+    background-color: rgba(0, 0, 0, 0.51);
     height: 5vh;
     text-align: center;
 }
@@ -11,11 +27,16 @@ a {
     background-image: linear-gradient(to right, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgba(209, 21, 150, 0.38));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding: 1em;
-    color: white;
+    padding: 1em 2em;
     text-decoration: none;
     cursor: pointer;
     font-family: "Audiowide", "cursive";
     text-align: center;
     margin: auto;
+}
+
+@media only screen and (max-width: 560px) {
+    ul {
+        display: none;
+    }
 }

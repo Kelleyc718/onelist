@@ -7,21 +7,37 @@ class Nav extends Component {
     renderLinks() {
         if (this.props.authenticated) {
             return (
-                <div className="nav-links">
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About Us</Link>
-                    <Link to="/playlist">Playlist</Link>
-                    <Link to="/logout">Logout</Link>
-                </div>
+                <ul className="nav-links">
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/about">About Us</Link>
+                    </li>
+                    <li>
+                        <Link to='/playlist'>Playlist</Link>
+                    </li>
+                    <li>
+                        <Link to="/logout">Logout</Link>
+                    </li>
+                </ul>
             );
         } else {
             return (
-                <div className="nav-links">
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About Us</Link>
-                    <Link to="/login">Login</Link>
-                    <Link to='/register'>Register</Link>
-                </div>
+                <ul className="nav">
+                    <li className="nav-links">
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className="nav-links">
+                        <Link to="/about">About Us</Link>
+                    </li>
+                    <li className="nav-links">
+                        <Link to='/register'>Register</Link>
+                    </li>
+                    <li className="nav-links">
+                        <Link to="/login">Login</Link>
+                    </li>
+                </ul>
             )
         }
     };
