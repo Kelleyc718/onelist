@@ -71,3 +71,4 @@ typings/
 .next
 /config.js
 /server/controllers/client_secret.json
+/controllers/youtube/oauth2.keys.json
