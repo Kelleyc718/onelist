@@ -7,17 +7,17 @@ class Nav extends Component {
     renderLinks() {
         if (this.props.authenticated) {
             return (
-                <ul className="nav-links">
-                    <li>
+                <ul className="nav">
+                    <li className="nav-links">
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li className="nav-links">
                         <Link to="/about">About Us</Link>
                     </li>
-                    <li>
+                    <li className="nav-links">
                         <Link to='/playlist'>Playlist</Link>
                     </li>
-                    <li>
+                    <li className="nav-links">
                         <Link to="/logout">Logout</Link>
                     </li>
                 </ul>

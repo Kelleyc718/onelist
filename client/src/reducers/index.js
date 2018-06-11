@@ -5,6 +5,6 @@ import playlist from "./playlist";
 
 export default combineReducers({
     auth,
-    playlist,
+    play_list: playlist,
     form: formReducer
 });

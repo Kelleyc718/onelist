@@ -1,3 +1,15 @@
+'use strict';
+
+const {google} = require('googleapis');
+const oauth2Client= require('../youtube/o2Auth');
+
+// initialize the Youtube API library
+const youtube = google.youtube({
+    version: 'v3',
+    auth: oauth2Client.o2Auth
+});
+
+// a very simple example of getting data from a playlist
 async function runSample () {
     // the first query will return data with an etag
     const res = await getPlaylistData(null);
@@ -17,7 +29,7 @@ async function getPlaylistData (etag) {
         headers['If-None-Match'] = etag;
     }
     const res = await youtube.playlists.list({
-        part: 'id, snippet',
+        part: 'id,snippet',
         id: 'PLIivdWyY5sqIij_cgINUHZDMnGjVx3rxi',
         headers: headers
     });
@@ -29,3 +41,7 @@ async function getPlaylistData (etag) {
 const scopes = [
     'https://www.googleapis.com/auth/youtube'
 ];
+
+sampleClient.authenticate(scopes)
+    .then(c => runSample())
+    .catch(console.error);

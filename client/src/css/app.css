@@ -14,10 +14,7 @@ html, body {
 }
 
 body {
-    background: url("../img/cover.jpeg") no-repeat center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
+    background-color: black;
 }
 
 #root {

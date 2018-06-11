@@ -2,6 +2,10 @@
   <dictionary name="ck">
     <words>
       <w>axios</w>
+      <w>bcrypt</w>
+      <w>cors</w>
+      <w>mongo</w>
+      <w>signin</w>
       <w>signup</w>
     </words>
   </dictionary>

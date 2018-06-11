@@ -1,11 +1,14 @@
 import React, {Component} from "react";
+import requireAuth from "../../components/auth/requireAuth";
 
-export default class Playlist extends Component {
+class Playlist extends Component {
     render() {
         return (
-            <div>
-                <h1>Playlist Updates</h1>
+            <div className="playlist">
+                <h1 className="current-playlist">nada</h1>
             </div>
         );
     }
-}
+};
+
+export default requireAuth(Playlist);

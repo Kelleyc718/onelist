@@ -1,6 +1,6 @@
 .title {
     min-width:400px;
-    margin: 40vh auto;
+    margin:1em auto;
     position: relative;
     background-image: linear-gradient(to right, #12aeeb, rgba(66, 153, 242, 0.53), rgba(126, 125, 232, 0.49), rgba(176, 87, 201, 0.49), rgba(209, 21, 150, 0.38));
     -webkit-background-clip: text;
@@ -18,4 +18,15 @@
     left: 15px;
     right: 5px;
     background-image: linear-gradient(to right, #12aeeb, rgba(66, 153, 242, 0.38), rgba(126, 125, 232, 0.35), rgba(176, 87, 201, 0.36), rgba(209, 21, 150, 0.38));
+}
+
+.landing {
+    padding: 0 3em;
+    position: relative;
+    margin: 10em auto 0 auto;
+}
+
+.logo {
+    max-width: 1000px;
+    margin: auto;
 }

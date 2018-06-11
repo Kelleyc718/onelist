@@ -41,7 +41,7 @@ export const logout = () => {
 
 export const playlist = (callback) => async dispatch => {
     try {
-        const response = await axios.get("http://localhost:3000/playlist");
+        const response = await axios.get(process.env.YT_API);
         console.log(response);
 
         dispatch({type: PLAY_LIST, payload: response.data.token});

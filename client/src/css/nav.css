@@ -6,13 +6,13 @@
     position: absolute;
 }
 /*Create a horizontal list with spacing*/
-.nav-links>li {
+.nav-links {
     height: 5vh;
     display:inline-block;
     margin: auto;
 }
 
-.nav-links>li:hover {
+.nav-links:hover {
     background-color: white;
 }
 

@@ -69,6 +69,7 @@ typings/
 .yarn-integrity
 .env
 .next
-/config.js
+/server/config/config.js
 /server/controllers/client_secret.json
 /controllers/youtube/oauth2.keys.json
+/config/config.js
