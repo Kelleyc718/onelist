@@ -1,16 +1,9 @@
-import {PLAY_LIST, PLAY_LIST_ERROR} from "../actions/types";
+import {PLAY_LIST} from "../actions/types";
 
-const INITIAL_STATE = {
-    authenticated: "",
-    errorMessage: ""
-};
-
-export default (state = INITIAL_STATE, action) => {
+export default (state = {}, action) => {
     switch (action.type) {
         case PLAY_LIST:
-            return {...state, authenticated: action.payload};
-        case PLAY_LIST_ERROR:
-            return {...state, errorMessage: action.payload};
+            return action.payload;
         default:
             return state;
     }

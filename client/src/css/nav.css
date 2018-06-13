@@ -1,26 +1,5 @@
-.nav {
-    width: 100%;
-    list-style-type:none;
-    margin: auto;
-    padding:0;
-    position: absolute;
-}
-/*Create a horizontal list with spacing*/
-.nav-links {
-    height: 5vh;
-    display:inline-block;
-    margin: auto;
-}
-
-.nav-links:hover {
-    background-color: white;
-}
-
-
-.nav-bar {
-    background-color: rgba(0, 0, 0, 0.51);
-    height: 5vh;
-    text-align: center;
+nav {
+    background-color: #eee;
 }
 
 a {
@@ -35,8 +14,6 @@ a {
     margin: auto;
 }
 
-@media only screen and (max-width: 560px) {
-    ul {
-        display: none;
-    }
+.brand-logo {
+    padding-left: 1em;
 }

@@ -1,5 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jwt-simple");
+const mongoose = require("mongoose");
+
 
 // Creates a authorization token allowing user to visit protected routes
 const tokenForUser = user => {

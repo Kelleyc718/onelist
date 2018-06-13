@@ -1,16 +1,18 @@
 .container {
     display: flex;
     font-family: "Exo", cursive;
-    color: white;
 }
 
 .v-title {
     position: absolute;
     top: 70px;
     left: -3.25em;
-    line-height: 1;
+    line-height: 1em;
     letter-spacing: -.05em;
-    color: hsla(0,0%,73%,.8);
+    background-image: linear-gradient(to right, #12aeeb, rgba(66, 153, 242, 0.53), rgba(126, 125, 232, 0.49), rgba(176, 87, 201, 0.49), rgba(209, 21, 150, 0.38));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.4em;
     -webkit-transform: rotate(-90deg);
     -webkit-transform-origin: bottom center;
     transform-origin: bottom center;

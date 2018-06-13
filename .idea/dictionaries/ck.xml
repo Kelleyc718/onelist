@@ -3,8 +3,10 @@
     <words>
       <w>axios</w>
       <w>bcrypt</w>
+      <w>buisness</w>
       <w>cors</w>
       <w>mongo</w>
+      <w>prividledges</w>
       <w>signin</w>
       <w>signup</w>
     </words>

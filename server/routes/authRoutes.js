@@ -7,7 +7,8 @@ require("dotenv").config();
 // Constants defined to protect routes
 const requireAuth = passport.authenticate("jwt", { session: false });
 const requireLogin = passport.authenticate("local", { session: false });
-const googleAuth = passport.authenticate("google");
+const googleAuth = passport.authenticate("google", {scope: ["profile", "email"]});
+
 
 // Routes used on server side for API
 module.exports = app => {
@@ -15,20 +16,23 @@ module.exports = app => {
   app.get("/auth/google", googleAuth);
 
   //Callback request to receive the token exchange
-  app.get("/auth/google/callback", googleAuth);
+  app.get("/auth/google/callback", passport.authenticate("google"),
+      (req, res) => {
+      res.redirect("/");
+  });
 
-  app.get("/current_user", (req, res) => {
+  app.get("/api/current_user", (req, res) => {
     res.send(req.user);
   });
 
-  app.get("/logout", (req, res) => {
+  app.get("/api/logout", (req, res) => {
       req.logout();
-      res.send("You have been logged out");
+      res.redirect("/");
   });
 
-  //Poassport route buisness logic
-  app.post("/login", requireLogin, Authentication.login);
+  //Passport route business logic
+  app.post("/api/login", requireLogin, Authentication.login);
 
-  //Poassport route buisness logic with db prividledges.
-  app.post("/register", Authentication.register);
+  //Passport route business logic with db privileges.
+  app.post("/api/register", Authentication.register);
 };

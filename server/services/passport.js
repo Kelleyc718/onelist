@@ -60,7 +60,6 @@ const googleOptions = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SEC,
   callbackURL: "/auth/google/callback",
-  scope: ["profile", "email"],
   proxy: true
 };
 
