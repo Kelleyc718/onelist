@@ -9,7 +9,7 @@
 }
 
 html, body {
-    background: #ffffff;
+    background: #eee;
     height: 100%;
     width: 100%;
 }
@@ -19,9 +19,9 @@ html, body {
     width: 100vw;
 }
 
-
-
-
+p {
+    line-height: 2rem;
+}
 
 
 
