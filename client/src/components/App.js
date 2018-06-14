@@ -16,18 +16,18 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <BrowserRouter>
-          <div className="main-content">
-            <Nav />
+      <BrowserRouter>
+        <div>
+          <Nav />
+          <div className="container">
             <Route path="/" exact component={Landing} />
             <Route path="/register" component={Register} />
             <Route path="/about" component={About} />
             <Route path="/playlist" component={Playlist} />
             <Route path="/login" component={Login} />
           </div>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -7,7 +7,9 @@ const playlistSchema = new Schema({
     service: String
 });
 
-mongoose.model("playlist", playlistSchema);
+const ModelClass = mongoose.model('playlist', playlistSchema);
+
+module.exports = ModelClass;
 
 
 

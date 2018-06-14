@@ -1,37 +1,55 @@
-body {
-    background: url("../img/cover.jpeg") no-repeat center;
+.login-landing {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background: url("../img/girlWHeadPhones.jpg") no-repeat fixed center;
     background-size: cover;
 }
 
-.login-container {
-    margin: auto;
-    width: 70%;
-    height: 100vh;
-}
-
-.login-form {
-    display: flex;
-    flex-flow: column;
-    background-color: #ffffff;
-    margin: 3rem auto;
-    height: 80vh;
-    width: 100%;
+.form {
+    height: fit-content;
+    width: 50%;
+    margin:auto;
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
 .login-group {
-    margin: 4rem auto;
-    width: 70%;
+    padding: 2rem 2rem 0 2rem;
+    margin: auto;
 }
 
 .btn-group {
-    margin: 0 auto;
+    margin: 2rem auto;
     text-align: center;
 }
 
 .button {
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 2px;
+    text-align: center;
+    margin: 0 10px 20px;
+    padding: 10px;
+    border-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.btn-text {
+    background-image: linear-gradient(to right, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgb(209, 21, 150));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.google-btn {
+    margin: auto;
+    text-align: center;
+    display: block;
+}
+
+@media only screen and (max-width: 568px) {
+    .form {
+        width: 80%;
+    }
+
+    .button {
+        padding: 5px;
+    }
 }
 

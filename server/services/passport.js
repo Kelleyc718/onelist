@@ -3,6 +3,7 @@ const { Strategy } = require("passport-jwt");
 const { ExtractJwt } = require("passport-jwt");
 const LocalStrategy = require("passport-local");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const YoutubeV3Strategy = require("passport-youtube-v3").Strategy;
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -78,10 +79,29 @@ const google = new GoogleStrategy(
   }
 );
 
+
+// OAuth2 For Youtube Access
+const youtubeOptions = {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SEC,
+    callbackURL: "/auth/youtube/callback",
+    proxy: true
+};
+
+const youtube = new YoutubeV3Strategy(
+    youtubeOptions,
+    async (accessToken, refreshToken, profile, done) => {
+        const existingUser = await User.findOne({userId: profile.id});
+        const user = await new User({ userId: profile.id }).save();
+        done(null, user);
+    }
+);
+
 // Passport instructions
 passport.use(jwtLogin);
 passport.use(localLogin);
 passport.use(google);
+passport.use(youtube);
 
 // TODO LIST
 //https://www.googleapis.com/auth/youtube",

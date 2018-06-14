@@ -7,6 +7,7 @@ const cookieSession = require("cookie-session");
 const cors = require("cors");
 const passport = require('passport');
 const auth = require("./routes/authRoutes");
+require("./models/Playlist");
 require("./models/User");
 require("./services/passport");
 require("dotenv").config();

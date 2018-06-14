@@ -16,9 +16,9 @@ class Login extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="login-container">
+        <div className="login-landing">
           <form
-            className="login-form card"
+            className="form card"
             onSubmit={handleSubmit(this.onSubmit)}
           >
             <div className="login-group">
@@ -48,13 +48,13 @@ class Login extends Component {
 
             <div className="btn-group">
               <button type="submit" className="login-btn button">
-                <a>Login</a>
+                <a className="btn-text">Login</a>
               </button>
               <button className="cancel-btn button">
-                <Link to="/">Cancel</Link>
+                <Link to="/" className="btn-text">Cancel</Link>
               </button>
                 <button className="google-btn button">
-                    <a href="/auth/google">Sign In With Google</a>
+                    <a className="btn-text" href="/auth/google">Sign In With Google</a>
                 </button>
             </div>
           </form>

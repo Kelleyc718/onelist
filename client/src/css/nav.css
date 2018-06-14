@@ -2,11 +2,10 @@ nav {
     background-color: #eee;
 }
 
-a {
+.nav-links, .brand-logo {
     background-image: linear-gradient(to right, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgba(209, 21, 150, 0.38));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding: 1em 2em;
     text-decoration: none;
     cursor: pointer;
     font-family: "Audiowide", "cursive";
@@ -15,5 +14,9 @@ a {
 }
 
 .brand-logo {
-    padding-left: 1em;
+    margin-left: 2rem;
+}
+
+.nav-links {
+    margin-right: 1rem;
 }
