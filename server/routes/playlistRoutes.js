@@ -1,6 +1,7 @@
+const youtubeUrl = "https://www.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&mine=true";
 
-module.export = app => {
-  app.get("/auth/youtube", async (req, res) => {
-    res.send(req.data);
-  });
+module.exports = app => {
+    app.get(youtubeUrl, (req, res) => {
+        console.log(res);
+    })
 };
