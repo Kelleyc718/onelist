@@ -4,12 +4,14 @@ const {Schema} = require('mongoose');
 // Basic Playlist model
 const playlistSchema = new Schema({
     _user: { type: Schema.Types.ObjectId, ref: "User" },
-    service: String
+    access_token: String,
+    service: String,
+    lists: String
 });
 
-const ModelClass = mongoose.model('playlist', playlistSchema);
+const PlaylistModel = mongoose.model('playlist', playlistSchema);
 
-module.exports = ModelClass;
+module.exports = PlaylistModel;
 
 
 

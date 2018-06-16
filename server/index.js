@@ -3,12 +3,13 @@ const http = require("http");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+require("./models/Playlist");
+require("./models/User");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
 const passport = require('passport');
 const auth = require("./routes/authRoutes");
-require("./models/Playlist");
-require("./models/User");
+const play = require("./routes/playlistRoutes");
 require("./services/passport");
 require("dotenv").config();
 
@@ -33,6 +34,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 auth(app);
+play(app);
+
 
 // Tell server to listen to the defined port
 server.listen(port);

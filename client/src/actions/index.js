@@ -1,9 +1,4 @@
-import {
-  CHECK_USER,
-  AUTH_USER,
-  AUTH_ERROR,
-  PLAY_LIST
-} from "./types";
+import { CHECK_USER, AUTH_USER, AUTH_ERROR, PLAY_LIST } from "./types";
 import axios from "axios";
 
 export const checkUser = () => async dispatch => {
@@ -11,7 +6,7 @@ export const checkUser = () => async dispatch => {
     const res = await axios.get("/api/current_user");
     dispatch({ type: CHECK_USER, payload: res.data });
   } catch (e) {
-    console.log("Login");
+    console.log(e);
   }
 };
 
@@ -45,14 +40,8 @@ export const login = (formProps, callback) => async dispatch => {
   }
 };
 
-export const playlist = () => async dispatch => {
-    const youtubeApi = 'https://www.googleapis.com/auth/youtube';
-  try {
-    const res = await axios.get(youtubeApi);
-    console.log(res);
-
-    dispatch({ type: PLAY_LIST, payload: res.data });
-  } catch (e) {
-      console.log("cannot find");
-  }
+export const playlist = accessToken => async dispatch => {
+  const res = await axios.post("/api/playlist", accessToken);
+  console.log(res);
+  dispatch({ type: PLAY_LIST, payload: console.log(res.data) });
 };

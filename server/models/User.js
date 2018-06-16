@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt-nodejs');
 const userSchema = new Schema({
     googleId: String,
     email: String,
+    access_token: String,
+    refresh_token: String,
     password: String
 });
 
@@ -13,7 +15,9 @@ const userSchema = new Schema({
 // Before saving a model, runs the salt/hash functions to encrypt password
 userSchema.pre("save", function(next) {
     const user = this;
-    console.log(user);
+    if (user.password == null) {
+        return next();
+    }
 
     // Generate salt for 10 rounds
     bcrypt.genSalt(10, function(err, salt) {
