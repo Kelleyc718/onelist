@@ -37,7 +37,7 @@ const google = new GoogleStrategy(
     const user = await new User({
       googleId: profile.id,
       email: profile.emails[0].value,
-      access_token: accessToken,
+      token: accessToken,
       refresh_token: refreshToken
     }).save();
     done(null, user);
