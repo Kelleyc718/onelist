@@ -26,8 +26,6 @@ const googleOptions = {
 const google = new GoogleStrategy(
   googleOptions,
   async (accessToken, refreshToken, profile, done) => {
-      console.log("Access Token - " + accessToken);
-      console.log("Refresh Token - " + refreshToken);
     const existingUser = await User.findOne({ googleId: profile.id });
 
     if (existingUser) {

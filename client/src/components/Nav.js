@@ -9,7 +9,7 @@ class Nav extends Component {
       return (
           <span>
               <li className="nav-links">
-                <Link to="/api/playlist">Playlist</Link>
+                <Link to="/playlist">Playlist</Link>
               </li>
               <li className="nav-links">
                 <a href="/api/logout">Logout</a>

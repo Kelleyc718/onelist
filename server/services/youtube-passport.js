@@ -23,13 +23,13 @@ const youtubeAuth = new YoutubeV3Strategy(
 
       if (existingUser) {
         const existingService = await Playlist.findOne({ service: "youtube" });
-        console.log(existingService);
         if (existingService) {
-          return done(null, existingUser);
+          return done(existingUser);
         } else {
           await Playlist({
             _user: existingUser,
-              token: accessToken,
+            refresh: refreshToken,
+            token: accessToken,
             service: "youtube"
           }).save();
         }

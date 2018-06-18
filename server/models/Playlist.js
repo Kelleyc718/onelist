@@ -5,6 +5,7 @@ const {Schema} = require('mongoose');
 const playlistSchema = new Schema({
     _user: { type: Schema.Types.ObjectId, ref: "User" },
     token: String,
+    refresh: String,
     service: String,
     lists: String
 });

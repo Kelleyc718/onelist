@@ -40,8 +40,7 @@ export const login = (formProps, callback) => async dispatch => {
   }
 };
 
-export const playlist = accessToken => async dispatch => {
-  const res = await axios.post("/api/playlist", accessToken);
-  console.log(res);
-  dispatch({ type: PLAY_LIST, payload: console.log(res.data) });
+export const playlist = async dispatch => {
+  const res = await axios.get("/api/playlist");
+  dispatch({ type: PLAY_LIST, payload: console.log(res.data )});
 };
