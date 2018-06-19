@@ -1,8 +1,8 @@
 const passport = require("passport");
 const YoutubeV3Strategy = require("passport-youtube-v3").Strategy;
 const mongoose = require("mongoose");
-const ObjectId = mongoose.Schema.Types.ObjectId;
 const User = mongoose.model("users");
+const ObjectId = mongoose.Schema.Types.ObjectId;
 const Playlist = mongoose.model("playlist");
 
 require("dotenv").config();
@@ -19,23 +19,24 @@ const youtubeAuth = new YoutubeV3Strategy(
   youtubeAuthOptions,
   async (accessToken, refreshToken, profile, done) => {
     try {
-      const existingUser = await User.findOne({ id: ObjectId });
-
-      if (existingUser) {
-        const existingService = await Playlist.findOne({ service: "youtube" });
+        const existingUser = await User.findOne({id: ObjectId});
+        const existingService = await Playlist.findOne({ _user: existingUser, service: "youtube" });
         if (existingService) {
-          return done(existingUser);
+          await Playlist.update({
+              refresh: refreshToken,
+              token: accessToken
+          });
+          return done(null, existingUser);
         } else {
           await Playlist({
-            _user: existingUser,
+            _user: profile.id,
             refresh: refreshToken,
             token: accessToken,
             service: "youtube"
           }).save();
         }
-      }
     } catch (e) {
-      console.log("error");
+      console.log("error " + e);
     }
   }
 );

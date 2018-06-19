@@ -4,16 +4,6 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users");
 require("dotenv").config();
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
-});
-
 // OAuth2.0 options for Google
 const googleOptions = {
   clientID: process.env.GOOGLE_CLIENT_ID,

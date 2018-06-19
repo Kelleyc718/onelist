@@ -10,11 +10,11 @@ require("dotenv").config();
 const requireAuth = passport.authenticate("jwt", { session: false });
 const requireLogin = passport.authenticate("local", { session: false });
 const googleAuth = passport.authenticate("google", {
-    access_type: "offline",
   scope: ["profile", "email"]
 });
 
 const youtubeAuth = passport.authenticate("youtube", {
+  access_type: "offline",
   scope: ["https://www.googleapis.com/auth/youtube"]
 });
 
@@ -29,14 +29,14 @@ module.exports = app => {
   });
 
   // Test Route
-app.get("/api/current_user", (req, res) => {
+  app.get("/api/current_user", (req, res) => {
     res.send(req.user);
   });
 
   // Youtube Auth Routes
   app.get("/auth/youtube", youtubeAuth);
   app.get("/auth/youtube/callback", youtubeAuth, (req, res) => {
-    res.redirect("/playlist")
+    res.redirect("/playlist");
   });
 
   // Logout Route
