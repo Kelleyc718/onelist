@@ -3,8 +3,7 @@ import React from "react";
 import ReactDom from "react-dom";
 import {Provider} from "react-redux";
 import {createStore, applyMiddleware} from "redux";
-import async from "./middlewares/async";
-import thunk from "redux-thunk";
+import Thunk from "redux-thunk";
 import reducers from "./reducers";
 import App from "./components/App";
 
@@ -13,7 +12,7 @@ import App from "./components/App";
 const store = createStore(
     reducers,
     {},
-    applyMiddleware(thunk, async)
+    applyMiddleware(Thunk)
 );
 
 ReactDom.render(

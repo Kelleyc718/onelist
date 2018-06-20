@@ -1,4 +1,4 @@
-import {CHECK_USER, AUTH_USER, AUTH_ERROR, PLAY_LIST_ERROR, PLAY_LISTS} from "./types";
+import { CHECK_USER, AUTH_USER, AUTH_ERROR, FETCH_LIST, FETCH_LIST_ERROR } from "./types";
 import axios from "axios";
 
 export const checkUser = () => async dispatch => {
@@ -40,15 +40,11 @@ export const login = (formProps, callback) => async dispatch => {
   }
 };
 
-export const playlists = () => {
+export const fetch = () => async dispatch => {
     try {
-        const res = axios.get("/api/playlist");
-        return {
-            type: PLAY_LISTS, payload: res
-        };
-    } catch (e) {
-        return {
-            type: PLAY_LIST_ERROR, payload: "Cannot find playlist."
-        };
+        const res = await axios.get("/api/playlist");
+        dispatch({type: FETCH_LIST, payload: res.data})
+    } catch(e) {
+        dispatch({type: FETCH_LIST_ERROR, payload: "Could not find playlist."})
     }
 };

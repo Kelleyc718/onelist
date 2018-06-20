@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../components/Nav";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Playlist from "./playlist/Playlist";
 import AddService from "./playlist/AddService";
 import Register from "./auth/Register";
@@ -17,7 +17,7 @@ class App extends Component {
   }
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           <Nav />
           <div className="container">
@@ -25,16 +25,20 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/about" component={About} />
             <Route path="/playlist" component={Playlist} />
-              <Route path="/addservice" component={AddService} />
+            <Route path="/addservice" component={AddService} />
             <Route path="/login" component={Login} />
           </div>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return { auth: state.auth };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(App);
