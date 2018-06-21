@@ -13,7 +13,7 @@ class Playlist extends Component {
   onRender() {
     if (this.props.playlist.lists.items) {
         return this.props.playlist.lists.items.map(item => {
-            const url = `https://www.youtube.com/embed?listType=playlist&list=${item.id}&origin=http://localhost:3000/playlist`;
+            const url = `https://www.youtube.com/watch?listType=playlist&list=${item.id}`;
             return <li key={item.id}><ReactPlayer url={url}/></li>;
         });
     }
