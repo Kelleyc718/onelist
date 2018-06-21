@@ -38,12 +38,6 @@ app.use(
         maxAge: 24 * 60 * 60 * 1000,
         keys: [process.env.APP_SECRET]
     }));
-
-app.use( async (req, res, next) => {
-    await res.header("Access-Control-Allow-Origin", "*");
-    await res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 app.use(passport.initialize());
 app.use(passport.session());
 auth(app);

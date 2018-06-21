@@ -1,6 +1,7 @@
 "use strict";
 const Authentication = require("../middlewares/authentication");
 const passport = require("passport");
+const path = require("path");
 require("../services/passport");
 require("../services/google-passport");
 require("../services/youtube-passport");
@@ -20,6 +21,9 @@ const youtubeAuth = passport.authenticate("youtube", {
 
 // Routes used on server side for API
 module.exports = app => {
+    app.get('*', (req, res)=>{
+        res.sendFile(path.join(__dirname, '../build/index.html'));
+    });
   // Google passport rules
   app.get("/auth/google", googleAuth);
 
