@@ -13,8 +13,6 @@ require("./models/User");
 
 // Authentication Imports
 const passport = require('passport');
-const auth = require("./routes/authRoutes");
-const play = require("./routes/playlistRoutes");
 require("./services/passport");
 
 // Environment Variables
@@ -30,9 +28,9 @@ const port = process.env.PORT || 5000;
 const server = http.createServer(app);
 
 // Middleware Setup
-app.use(cors());
+app.use("*", cors());
 app.use(morgan("combined"));
-app.use(bodyParser.json({ type: "*/*" }));
+app.use(bodyParser.json({}));
 app.use(
     cookieSession({
         maxAge: 24 * 60 * 60 * 1000,
@@ -40,8 +38,8 @@ app.use(
     }));
 app.use(passport.initialize());
 app.use(passport.session());
-auth(app);
-play(app);
+require("./routes/authRoutes")(app);
+require("./routes/playlistRoutes")(app);
 
 
 // Tell server to listen to the defined port

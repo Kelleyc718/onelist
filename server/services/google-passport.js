@@ -16,21 +16,37 @@ const googleOptions = {
 const google = new GoogleStrategy(
   googleOptions,
   async (accessToken, refreshToken, profile, done) => {
-    const existingUser = await User.findOne({ googleId: profile.id });
+    const existingUser = await User.findOne({ serviceId: profile.id });
 
     if (existingUser) {
       return done(null, existingUser);
     }
 
+    if (!accessToken) {
+        accessToken = null;
+        console.log("no token available");
+    }
+
+      if (!refreshToken) {
+          refreshToken = null;
+          console.log("no refresh token available");
+      }
+
     const user = await new User({
-      googleId: profile.id,
       email: profile.emails[0].value,
-      token: accessToken,
-      refresh_token: refreshToken
+      serviceId: {
+        google: profile.id
+      },
+      serviceTokens: {
+        google: {
+          token: accessToken,
+          refresh_token: refreshToken,
+          expires_in: 1000 * 60 * 60
+        }
+      }
     }).save();
     done(null, user);
   }
 );
 
 passport.use(google);
-

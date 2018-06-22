@@ -1,10 +1,10 @@
 "use strict";
 const Authentication = require("../middlewares/authentication");
 const passport = require("passport");
-const path = require("path");
 require("../services/passport");
 require("../services/google-passport");
 require("../services/youtube-passport");
+require("../services/spotify-passport");
 require("dotenv").config();
 
 // Constants defined to protect routes
@@ -19,11 +19,20 @@ const youtubeAuth = passport.authenticate("youtube", {
   scope: ["https://www.googleapis.com/auth/youtube"]
 });
 
+const spotifyAuth = passport.authenticate("spotify", {
+  scope: ["user-read-email", "user-read-private"]
+});
+
 // Routes used on server side for API
 module.exports = app => {
-    app.get('*', (req, res)=>{
-        res.sendFile(path.join(__dirname, '../build/index.html'));
-    });
+  //Spotify passport rules
+  app.get("/auth/spotify", spotifyAuth);
+    app.get('/auth/spotify/callback', spotifyAuth,
+        (req, res) => {
+            // Successful authentication, redirect home.
+            res.redirect('/');
+        });
+
   // Google passport rules
   app.get("/auth/google", googleAuth);
 

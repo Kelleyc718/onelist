@@ -19,7 +19,7 @@ class AddService extends Component {
                             src={require("../../img/spotify.svg")}
                             alt="Spotify Icon"
                         />
-                        <a href="/api/spotify">Spotify</a>
+                        <a href="/auth/spotify">Spotify</a>
                     </li>
                     <li className="service picker__list-item">
                         <img

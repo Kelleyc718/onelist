@@ -11,11 +11,15 @@ class Playlist extends Component {
   }
 
   onRender() {
-    if (this.props.playlist.lists.items) {
-        return this.props.playlist.lists.items.map(item => {
-            const url = `https://www.youtube.com/watch?listType=playlist&list=${item.id}`;
-            return <li key={item.id}><ReactPlayer url={url}/></li>;
-        });
+    if (this.props.playlist.lists) {
+      return this.props.playlist.lists.map(list => {
+        const url = `http://youtube.com/watch?listType=playlist&list=${list.id}`;
+        return (
+          <li key={list.id}>
+              <ReactPlayer url={url} />
+          </li>
+        );
+      });
     }
     return "Loading";
   }
