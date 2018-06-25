@@ -19,24 +19,32 @@ const youtubeAuth = new YoutubeV3Strategy(
   youtubeAuthOptions,
   async (accessToken, refreshToken, profile, done) => {
     try {
-        const existingUser = await User.findOne({id: ObjectId});
-        const existingService = await Playlist.findOne({ _user: existingUser, service: "youtube" });
-        if (existingService) {
-          await Playlist.update({
-              refresh: refreshToken,
-              token: accessToken
-          });
-          return done(null, existingUser);
-        } else {
-          await Playlist({
-            _user: profile.id,
-            refresh: refreshToken,
-            token: accessToken,
-            service: "youtube"
-          }).save();
-        }
+      const existingUser = await User.findOne({ id: ObjectId });
+      const existingService = await Playlist.findOne({
+          "service.name": "youtube"
+      });
+
+      if (existingService) {
+        await Playlist.update({
+          accessToken: accessToken,
+          refreshToken: refreshToken
+        });
+
+        return done(null, existingService);
+      } else {
+        await Playlist({
+          _user: existingUser,
+          service: {
+            name: "youtube",
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+            expires_in: 3500
+          }
+        }).save();
+        return done(null, existingUser);
+      }
     } catch (e) {
-      console.log("error " + e);
+      console.log("error" + e);
     }
   }
 );

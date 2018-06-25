@@ -5,9 +5,6 @@ const bcrypt = require("bcrypt-nodejs");
 // Basic user model
 const userSchema = new Schema({
     email: String,
-    serviceId: {
-        type: Object
-    },
     serviceTokens: {
         type:Object
     },

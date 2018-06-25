@@ -50,11 +50,11 @@ class Login extends Component {
                 Cancel
               </Link>
             </button>
-            <a className="btn-text" href="/auth/google" type="button">
-              <button className="google-btn button" type="button">
-                Sign In With Google
+              <button className="button">
+                  <a href={"/auth/google"} className="btn-text">
+                      Sign in with Google
+                  </a>
               </button>
-            </a>
           </div>
         </form>
       </div>

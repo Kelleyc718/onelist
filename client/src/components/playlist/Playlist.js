@@ -6,23 +6,23 @@ import ReactPlayer from "react-player";
 import "../../css/playlist.css";
 
 class Playlist extends Component {
-  componentDidMount() {
-    this.props.fetch();
-  }
-
-  onRender() {
-    if (this.props.playlist.lists) {
-      return this.props.playlist.lists.map(list => {
-        const url = `http://youtube.com/watch?listType=playlist&list=${list.id}`;
-        return (
-          <li key={list.id}>
-              <ReactPlayer url={url} />
-          </li>
-        );
-      });
+    componentDidMount() {
+        this.props.fetch();
     }
-    return "Loading";
-  }
+
+    onRender() {
+        if (!this.props.playlist) {
+            return this.props.errorMessage;
+        }
+        return this.props.map(list => {
+            const url = `http://youtube.com/watch?listType=playlist&list=${list.id}`;
+            return (
+                <li key={list.id}>
+                    <ReactPlayer url={url}/>
+                </li>
+            );
+        });
+    }
 
   render() {
     return (
@@ -39,8 +39,8 @@ class Playlist extends Component {
   }
 }
 
-const mapStateToProps = ({ playlist }) => {
-  return { playlist };
+const mapStateToProps = ({playlist}) => {
+    return { errorMessage: playlist.errorMessage };
 };
 export default connect(
   mapStateToProps,

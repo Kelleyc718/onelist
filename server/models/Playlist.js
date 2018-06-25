@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
-const {Schema} = require('mongoose');
+const mongoose = require("mongoose");
+const { Schema } = require("mongoose");
 
 // Basic Playlist model
 const playlistSchema = new Schema({
-    _user: { type: Schema.Types.ObjectId, ref: "User" },
-    token: String,
-    refresh: String,
-    service: String
+  _user: { type: Schema.Types.ObjectId, ref: "User" },
+  service: {
+      name: String,
+      accessToken: String,
+      refreshToken: String,
+      expires_in: Number
+    }
 });
 
-const PlaylistModel = mongoose.model('playlist', playlistSchema);
+const PlaylistModel = mongoose.model("playlist", playlistSchema);
 
 module.exports = PlaylistModel;
-
-
-

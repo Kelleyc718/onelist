@@ -9,36 +9,36 @@ const googleOptions = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SEC,
   callbackURL: "/auth/google/callback",
-  proxy: true
+  access_type: "offline"
 };
 
 // Google O2Auth Buisness Logic
 const google = new GoogleStrategy(
   googleOptions,
   async (accessToken, refreshToken, profile, done) => {
-    const existingUser = await User.findOne({ serviceId: profile.id });
+    const existingUser = await User.findOne({
+      serviceId: { google: profile.id }
+    });
 
     if (existingUser) {
       return done(null, existingUser);
     }
 
     if (!accessToken) {
-        accessToken = null;
-        console.log("no token available");
+      accessToken = null;
+      console.log("no token available");
     }
 
-      if (!refreshToken) {
-          refreshToken = null;
-          console.log("no refresh token available");
-      }
+    if (!refreshToken) {
+      refreshToken = null;
+      console.log("no refresh token available");
+    }
 
     const user = await new User({
       email: profile.emails[0].value,
-      serviceId: {
-        google: profile.id
-      },
       serviceTokens: {
         google: {
+          profileId: profile.id,
           token: accessToken,
           refresh_token: refreshToken,
           expires_in: 1000 * 60 * 60
