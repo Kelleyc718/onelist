@@ -21,7 +21,7 @@ const youtubeAuth = new YoutubeV3Strategy(
     try {
       const existingUser = await User.findOne({ id: ObjectId });
       const existingService = await Playlist.findOne({
-          "service.name": "youtube"
+          _user : existingUser
       });
 
       if (existingService) {
@@ -34,7 +34,7 @@ const youtubeAuth = new YoutubeV3Strategy(
       } else {
         await Playlist({
           _user: existingUser,
-          service: {
+          services: {
             name: "youtube",
             accessToken: accessToken,
             refreshToken: refreshToken,

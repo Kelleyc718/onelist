@@ -30,7 +30,7 @@ module.exports = app => {
     app.get('/auth/spotify/callback', spotifyAuth,
         (req, res) => {
             // Successful authentication, redirect home.
-            res.redirect('/');
+            res.redirect('/playlist');
         });
 
   // Google passport rules

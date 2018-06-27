@@ -17,7 +17,7 @@ const google = new GoogleStrategy(
   googleOptions,
   async (accessToken, refreshToken, profile, done) => {
     const existingUser = await User.findOne({
-      serviceId: { google: profile.id }
+      "serviceTokens.google.profileId" : profile.id
     });
 
     if (existingUser) {

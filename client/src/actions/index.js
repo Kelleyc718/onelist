@@ -44,7 +44,7 @@ export const fetch = () => async dispatch => {
     try {
         const res = await axios.get("/api/spotify/playlist");
         dispatch({type: FETCH_LIST, payload: res.data})
-    } catch(e) {
+    } catch (e) {
         dispatch({type: FETCH_LIST_ERROR, payload: "Could not find playlist."})
     }
 };

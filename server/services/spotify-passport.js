@@ -1,7 +1,9 @@
-const SpotifyStrategy = require("passport-spotify").Strategy;
 const passport = require("passport");
+const SpotifyStrategy = require("passport-spotify").Strategy;
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Playlist = mongoose.model("playlist");
 require("dotenv").config();
 
 const spotifyOptions = {
@@ -13,36 +15,31 @@ const spotifyOptions = {
 const spotify = new SpotifyStrategy(
   spotifyOptions,
   async (accessToken, refreshToken, expires_in, profile, done) => {
-    const existingUser = await User.findOne({ email: profile.emails[0].value });
-
-    if (existingUser) {
-      const existingService = await User.findOne({ service: spotify });
-      if (existingService) {
-        return done(null, existingUser);
-      } else {
-        User.update({
-          spotifyId: profile.id,
-          tokens: {
-            spotifyTokens: {
-              token: accessToken,
-              refreshToken: refreshToken
-            }
-          }
-        });
+    const existingUser = await User.findOne({ id: ObjectId });
+    const existingService = await Playlist.findOne({
+      services: {
+        $elemMatch: {
+          name: "spotify"
+        }
       }
-    }
+    });
 
-    const user = await new User({
-      spotifyId: profile.id,
-      email: profile.emails[0].value,
-      spotifyTokens: {
-        token: accessToken,
-        refresh_token: refreshToken,
-        expires_in: expires_in
-      },
-      service: "spotify"
-    }).save();
-    done(null, user);
+    if (existingUser && existingService) {
+      return done(null, existingService);
+    } else {
+      await Playlist.update({
+          _user: existingUser,
+          $push: {
+              services:{
+                       name: "spotify",
+                       accessToken: accessToken,
+                       refreshToken: refreshToken,
+                       expires_in: 3500
+                   }
+          }
+    });
+      return done(null, existingService);
+    }
   }
 );
 

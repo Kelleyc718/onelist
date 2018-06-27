@@ -17,14 +17,14 @@ module.exports = app => {
       }).then((data) => res.send(data))
   });
 
-    // app.get("/api/spotify/playlist", async (req, res) => {
-    //     const currentUserPlaylist = await User.findOne(req.user);
-    //     promise({
-    //         uri:
-    //             "https://api.spotify.com/v1/me/playlists",
-    //         headers: {
-    //             'Authorization': `Bearer ${currentUserPlaylist.token}`
-    //         }
-    //     }).then((data) => res.send(data))
-    // });
+     app.get("/api/spotify/playlist", async (req, res) => {
+        const currentUserPlaylist = await User.findOne(req.user);
+        promise({
+            uri:
+                "https://api.spotify.com/v1/me/playlists",
+            headers: {
+                'Authorization': `Bearer ${currentUserPlaylist.token}`
+            }
+        }).then((data) => res.send(data))
+    });
 };
