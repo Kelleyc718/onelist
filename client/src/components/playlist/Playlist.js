@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import ReactPlayer from "react-player";
 import "../../css/playlist.css";
 
 class Playlist extends Component {
@@ -11,18 +10,15 @@ class Playlist extends Component {
     }
 
     onRender() {
-        if (!this.props.playlist) {
+        console.log(this.props.spotify);
+        if (!this.props.spotify) {
             return this.props.errorMessage;
         }
-        return this.props.map(list => {
-            const url = `http://youtube.com/watch?listType=playlist&list=${list.id}`;
-            return (
-                <li key={list.id}>
-                    <ReactPlayer url={url}/>
-                </li>
-            );
-        });
+        return this.props.spotify.items.map(item => {
+            return <li key={item.track.id}>{item.track.name}</li>
+        })
     }
+
 
   render() {
     return (
@@ -39,8 +35,8 @@ class Playlist extends Component {
   }
 }
 
-const mapStateToProps = ({playlist}) => {
-    return { errorMessage: playlist.errorMessage };
+const mapStateToProps = (state) => {
+    return state.playlist;
 };
 export default connect(
   mapStateToProps,

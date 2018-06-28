@@ -15,30 +15,32 @@ const spotifyOptions = {
 const spotify = new SpotifyStrategy(
   spotifyOptions,
   async (accessToken, refreshToken, expires_in, profile, done) => {
-    const existingUser = await User.findOne({ id: ObjectId });
-    const existingService = await Playlist.findOne({
-      services: {
-        $elemMatch: {
-          name: "spotify"
-        }
-      }
+    const existingUser = await User.findOne({
+      _user: ObjectId
     });
 
-    if (existingUser && existingService) {
-      return done(null, existingService);
-    } else {
-      await Playlist.update({
-          _user: existingUser,
-          $push: {
-              services:{
-                       name: "spotify",
-                       accessToken: accessToken,
-                       refreshToken: refreshToken,
-                       expires_in: 3500
-                   }
-          }
+    const existingPlaylist = await Playlist.findOne({
+      _user: existingUser
     });
-      return done(null, existingService);
+
+    if (existingPlaylist) {
+      await Playlist.update({
+        spotify: {
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+          expires_in: expires_in
+        }
+      });
+      return done(null, existingPlaylist);
+    } else {
+      await Playlist({
+        _user: existingUser,
+        spotify: {
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+          expires_in: expires_in
+        }
+      }).save(done);
     }
   }
 );

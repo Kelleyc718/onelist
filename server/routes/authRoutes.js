@@ -26,12 +26,11 @@ const spotifyAuth = passport.authenticate("spotify", {
 // Routes used on server side for API
 module.exports = app => {
   //Spotify passport rules
-  app.get("/auth/spotify", spotifyAuth);
-    app.get('/auth/spotify/callback', spotifyAuth,
-        (req, res) => {
-            // Successful authentication, redirect home.
-            res.redirect('/playlist');
-        });
+  app.get("/auth/spotify", requireLogin, spotifyAuth);
+  app.get("/auth/spotify/callback", spotifyAuth, (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect("/playlist");
+  });
 
   // Google passport rules
   app.get("/auth/google", googleAuth);
@@ -47,7 +46,7 @@ module.exports = app => {
   });
 
   // Youtube Auth Routes
-  app.get("/auth/youtube", youtubeAuth);
+  app.get("/auth/youtube", requireLogin, youtubeAuth);
   app.get("/auth/youtube/callback", youtubeAuth, (req, res) => {
     res.redirect("/playlist");
   });
