@@ -33,7 +33,7 @@ app.use(morgan("combined"));
 app.use(bodyParser.json({}));
 app.use(
     cookieSession({
-        maxAge: 24 * 60 * 60 * 1000,
+        maxAge: 60 * 60 * 1000,
         keys: [process.env.APP_SECRET]
     }));
 app.use(passport.initialize());

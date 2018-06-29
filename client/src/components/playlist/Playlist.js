@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import ReactPlayer from "react-player";
 import * as actions from "../../actions";
 import "../../css/playlist.css";
 
@@ -10,12 +11,13 @@ class Playlist extends Component {
     }
 
     onRender() {
-        console.log(this.props.spotify);
         if (!this.props.spotify) {
             return this.props.errorMessage;
         }
         return this.props.spotify.items.map(item => {
-            return <li key={item.track.id}>{item.track.name}</li>
+            return <li key={item.track.id}><img src={item.track.album.images[2].url} alt="Album cover"/>
+                {item.track.artists[0].name} - {item.track.name}
+            </li>
         })
     }
 

@@ -26,7 +26,7 @@ const spotifyAuth = passport.authenticate("spotify", {
 // Routes used on server side for API
 module.exports = app => {
   //Spotify passport rules
-  app.get("/auth/spotify", requireLogin, spotifyAuth);
+  app.get("/auth/spotify", spotifyAuth);
   app.get("/auth/spotify/callback", spotifyAuth, (req, res) => {
     // Successful authentication, redirect home.
     res.redirect("/playlist");
@@ -46,7 +46,7 @@ module.exports = app => {
   });
 
   // Youtube Auth Routes
-  app.get("/auth/youtube", requireLogin, youtubeAuth);
+  app.get("/auth/youtube", youtubeAuth);
   app.get("/auth/youtube/callback", youtubeAuth, (req, res) => {
     res.redirect("/playlist");
   });
@@ -58,7 +58,7 @@ module.exports = app => {
   });
 
   //Passport route business logic
-  app.post("/api/login", requireLogin, Authentication.login);
+  app.post("/api/login", Authentication.login);
 
   //Passport route business logic with db privileges.
   app.post("/api/register", Authentication.register);
