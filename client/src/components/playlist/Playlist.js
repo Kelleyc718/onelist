@@ -1,31 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import ReactPlayer from "react-player";
 import * as actions from "../../actions";
 import "../../css/playlist.css";
 
 class Playlist extends Component {
-    componentDidMount() {
-        this.props.fetch();
-    }
+  componentDidMount() {
+      this.props.fetch();
+  }
 
-    onRender() {
-        if (!this.props.spotify) {
-            return this.props.errorMessage;
-        }
-        return this.props.spotify.items.map(item => {
-            return <li key={item.track.id}><img src={item.track.album.images[2].url} alt="Album cover"/>
-                {item.track.artists[0].name} - {item.track.name}
-            </li>
-        })
+  onRender() {
+    if (!this.props.spotify) {
+      return this.props.errorMessage;
+    } else {
+      return this.props.spotify.items.map(item => {
+        return (
+          <li key={item.track.id} className="playlist-items">
+            <img src={item.track.album.images[2].url} alt="Album cover" />
+            <p className="track-info">
+              {item.track.artists[0].name} - {item.track.name}
+            </p>
+          </li>
+        );
+      });
     }
-
+  }
 
   render() {
     return (
-      <div className="container">
-        <button>
+      <div className="playlist-comp">
+        <button className="service-button btn">
           <Link to="/addservice">Add New Service</Link>
         </button>
 
@@ -37,8 +41,8 @@ class Playlist extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-    return state.playlist;
+const mapStateToProps = state => {
+  return state.playlist;
 };
 export default connect(
   mapStateToProps,

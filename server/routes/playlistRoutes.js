@@ -1,3 +1,4 @@
+const requireLogin = require("../middlewares/requireLogin");
 const mongoose = require("mongoose");
 const promise = require("request-promise");
 require("../models/User");
@@ -19,7 +20,7 @@ module.exports = app => {
     }).then(data => res.send(data));
   });
 
-  app.get("/api/spotify/playlist", async (req, res) => {
+  app.get("/api/spotify/playlist", requireLogin, async (req, res) => {
     const currentUser = await User.findOne(req.user);
     const currentUserPlaylist = await Playlist.findOne({
       _user: currentUser
@@ -29,6 +30,8 @@ module.exports = app => {
       headers: {
         Authorization: `Bearer ${currentUserPlaylist.spotify.accessToken}`
       }
-    }).then(data => res.send(data));
+    }).then(data => {
+        res.send(data);
+    })
   });
 };

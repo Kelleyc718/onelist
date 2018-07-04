@@ -1,5 +1,6 @@
 // Express and Middleware imports
 const express = require("express");
+const path = require("path");
 const http = require("http");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -42,6 +43,15 @@ require("./routes/authRoutes")(app);
 require("./routes/playlistRoutes")(app);
 
 
+// if (process.env.NODE_ENV === "production") {
+//     // Production assets served for known express routes
+//     app.use(express.static("client/build"));
+//
+//     // Serve Index for routes unknown to Express
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+//     });
+// }
 // Tell server to listen to the defined port
 server.listen(port);
 console.log("Server listening on " + port);

@@ -1,5 +1,6 @@
 "use strict";
-const Authentication = require("../middlewares/authentication");
+const { register, login } = require("../middlewares/authentication");
+const requireLogin = require("../middlewares/requireLogin");
 const passport = require("passport");
 require("../services/passport");
 require("../services/google-passport");
@@ -8,10 +9,10 @@ require("../services/spotify-passport");
 require("dotenv").config();
 
 // Constants defined to protect routes
-const requireAuth = passport.authenticate("jwt", { session: false });
-const requireLogin = passport.authenticate("local", { session: false });
 const googleAuth = passport.authenticate("google", {
-  scope: ["profile", "email"]
+  scope: ["profile", "email"],
+  successRedirect: "/",
+  failureRedirect: "/login"
 });
 
 const youtubeAuth = passport.authenticate("youtube", {
@@ -20,7 +21,12 @@ const youtubeAuth = passport.authenticate("youtube", {
 });
 
 const spotifyAuth = passport.authenticate("spotify", {
-  scope: ["user-read-email", "user-read-private"]
+  scope: [
+    "streaming",
+    "user-read-birthdate",
+    "user-read-private",
+    "user-modify-playback-state"
+  ]
 });
 
 // Routes used on server side for API
@@ -28,7 +34,6 @@ module.exports = app => {
   //Spotify passport rules
   app.get("/auth/spotify", spotifyAuth);
   app.get("/auth/spotify/callback", spotifyAuth, (req, res) => {
-    // Successful authentication, redirect home.
     res.redirect("/playlist");
   });
 
@@ -37,7 +42,7 @@ module.exports = app => {
 
   //Callback request to receive the token exchange
   app.get("/auth/google/callback", googleAuth, (req, res) => {
-    res.redirect("/playlist");
+    res.redirect("/");
   });
 
   // Test Route
@@ -58,8 +63,8 @@ module.exports = app => {
   });
 
   //Passport route business logic
-  app.post("/api/login", Authentication.login);
+  app.post("/api/login");
 
   //Passport route business logic with db privileges.
-  app.post("/api/register", Authentication.register);
+  app.post("/api/register", register);
 };

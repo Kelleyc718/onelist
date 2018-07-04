@@ -14,11 +14,6 @@ html, body, #root {
     width: 100%;
 }
 
-.main-content {
-    min-height: stretch;
-}
-
-
 p {
     line-height: 2rem;
 }

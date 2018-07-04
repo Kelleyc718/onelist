@@ -2,15 +2,23 @@
     height: 1.6em;
     width: 1.6em;
 }
-.container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin: auto;
+
+.service-button {
+    background: white;
+    padding: 0.6rem;
+    margin: 1rem auto;
 }
 
 .playlist {
     margin: auto;
     height: 50vh;
-    width: 50vw;
+    width: 60vw;
+    padding: 1em;
+    overflow: scroll;
+}
+
+.track-info {
+    display: inline;
+    margin: auto;
+    padding: 0.6rem;
 }
