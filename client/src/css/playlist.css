@@ -9,6 +9,10 @@
     margin: 1rem auto;
 }
 
+.btn:hover {
+    background: #eee;
+}
+
 .playlist {
     margin: auto;
     height: 50vh;
