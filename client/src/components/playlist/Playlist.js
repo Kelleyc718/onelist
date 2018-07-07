@@ -6,30 +6,41 @@ import "../../css/playlist.css";
 
 class Playlist extends Component {
   componentDidMount() {
-    this.props.fetchLists();
+    if (!this.props.auth.authenticated) {
+      return this.props.errorMessage;
+    }
+    this.props.fetchList();
   }
 
   onRender() {
-      return (!this.props.auth.authenticated)
-          ? <div>{this.props.auth.errorMessage}</div>
-          : (this.props.isFetching)
-              ? <div>{this.props.loadingMessage}</div>
-              : (this.props.playlist.lists)
-                  ? <div>{this.props.spotify}</div>
-                  : "Hi";
+    if (this.props.playlist.isFetching) {
+      return <div>{this.props.playlist.loadingMessage}</div>;
+    }
 
-        // this.props.spotify.map(item => {
-      //   return (
-      //     <li key={item.track.id} className="playlist-items">
-      //       <img src={item.track.album.images[2].url} alt="Album cover" />
-      //       <p className="track-info">
-      //         {item.track.artists[0].name} - {item.track.name}
-      //       </p>
-      //     </li>
-
+    if (this.props.playlist.lists) {
+      return this.props.playlist.lists.items.map(item => {
+        return (
+          <li key={item.track.id} className="playlist-items">
+            <img src={item.track.album.images[2].url} alt="Album cover" />
+            <p className="track-info">
+              {item.track.artists[0].name} - {item.track.name}
+            </p>
+          </li>
+        );
+      });
+    }
   }
 
   render() {
+    if (!this.props.auth.authenticated) {
+      return (
+        <div className="playlist-comp">
+          <div className="playlist card">
+            <h4 className="error-text">{this.props.auth.errorMessage}</h4>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="playlist-comp">
         <button className="service-button btn">

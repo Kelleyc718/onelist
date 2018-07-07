@@ -14,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_LIST_REQUEST:
         console.log("fetching the playlist requested.");
-      return {...state, isFetching: true, lists: "Loading...Thank you for your patience." };
+      return {...state, isFetching: true, loadingMessage: "Loading...Thank you for your patience." };
 
     case FETCH_LIST_SUCCESS:
         console.log("fetching the playlist succeeded.");
@@ -22,7 +22,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case FETCH_LIST_FAILURE:
         console.log("fetching the playlist failed.");
-      return {...state, isFetching: false, errorMessage: "Something went wrong."};
+      return {...state, isFetching: false, lists: "Cannot Find.", errorMessage: "Something went wrong."};
 
     default:
       return state;

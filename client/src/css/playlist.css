@@ -31,3 +31,10 @@
     margin: auto;
     min-width: 400px;
 }
+
+.error-text {
+    margin: auto;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}

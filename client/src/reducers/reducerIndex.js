@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 import {reducer as formReducer} from "redux-form";
-import auth from "./auth";
-import playlist from "./playlists";
+import auth from "./authReducer";
+import playlist from "./playlistsReducer";
 
 export default combineReducers({
     auth,

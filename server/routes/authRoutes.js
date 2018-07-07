@@ -32,8 +32,8 @@ const spotifyAuth = passport.authenticate("spotify", {
 // Routes used on server side for API
 module.exports = app => {
   //Spotify passport rules
-  app.get("/auth/spotify", requireLogin, spotifyAuth);
-  app.get("/auth/spotify/callback", requireLogin, spotifyAuth, (req, res) => {
+  app.get("/auth/spotify", spotifyAuth);
+  app.get("/auth/spotify/callback", spotifyAuth, (req, res) => {
     res.redirect("/playlist");
   });
 
