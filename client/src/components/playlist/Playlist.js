@@ -1,29 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import * as actions from "../../actions/actionsIndex";
 import "../../css/playlist.css";
 
 class Playlist extends Component {
   componentDidMount() {
-      this.props.fetch();
+    this.props.fetchLists();
   }
 
   onRender() {
-    if (!this.props.spotify) {
-      return this.props.errorMessage;
-    } else {
-      return this.props.spotify.items.map(item => {
-        return (
-          <li key={item.track.id} className="playlist-items">
-            <img src={item.track.album.images[2].url} alt="Album cover" />
-            <p className="track-info">
-              {item.track.artists[0].name} - {item.track.name}
-            </p>
-          </li>
-        );
-      });
-    }
+      return (!this.props.auth.authenticated)
+          ? <div>{this.props.auth.errorMessage}</div>
+          : (this.props.isFetching)
+              ? <div>{this.props.loadingMessage}</div>
+              : (this.props.playlist.lists)
+                  ? <div>{this.props.spotify}</div>
+                  : "Hi";
+
+        // this.props.spotify.map(item => {
+      //   return (
+      //     <li key={item.track.id} className="playlist-items">
+      //       <img src={item.track.album.images[2].url} alt="Album cover" />
+      //       <p className="track-info">
+      //         {item.track.artists[0].name} - {item.track.name}
+      //       </p>
+      //     </li>
+
   }
 
   render() {
@@ -42,7 +45,10 @@ class Playlist extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.playlist;
+  return {
+    playlist: state.playlist,
+    auth: state.auth
+  };
 };
 export default connect(
   mapStateToProps,

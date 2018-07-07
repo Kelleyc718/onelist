@@ -1,5 +1,5 @@
 "use strict";
-const { register, login } = require("../middlewares/authentication");
+const Authentication = require("../middlewares/authentication");
 const requireLogin = require("../middlewares/requireLogin");
 const passport = require("passport");
 require("../services/passport");
@@ -32,8 +32,8 @@ const spotifyAuth = passport.authenticate("spotify", {
 // Routes used on server side for API
 module.exports = app => {
   //Spotify passport rules
-  app.get("/auth/spotify", spotifyAuth);
-  app.get("/auth/spotify/callback", spotifyAuth, (req, res) => {
+  app.get("/auth/spotify", requireLogin, spotifyAuth);
+  app.get("/auth/spotify/callback", requireLogin, spotifyAuth, (req, res) => {
     res.redirect("/playlist");
   });
 
@@ -63,8 +63,8 @@ module.exports = app => {
   });
 
   //Passport route business logic
-  app.post("/api/login");
+  app.post("/api/login", Authentication.login);
 
   //Passport route business logic with db privileges.
-  app.post("/api/register", register);
+  app.post("/api/register", Authentication.register);
 };

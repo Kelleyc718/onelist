@@ -5,6 +5,7 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: content-box;
     box-sizing: content-box;
 }
 
@@ -12,6 +13,11 @@ html, body, #root {
     background: #eee;
     height: 100%;
     width: 100%;
+}
+
+#root, .app-container, .container {
+    height: 100vh;
+    width: 100vw;
 }
 
 p {

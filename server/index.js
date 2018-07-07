@@ -52,6 +52,7 @@ require("./routes/playlistRoutes")(app);
 //         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 //     });
 // }
+
 // Tell server to listen to the defined port
 server.listen(port);
 console.log("Server listening on " + port);

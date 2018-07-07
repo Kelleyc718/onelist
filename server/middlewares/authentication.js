@@ -5,7 +5,6 @@ require("../models/User");
 
 const existingUser = mongoose.model("users");
 
-
 // Creates a authorization token allowing user to visit protected routes
 const tokenForUser = user => {
   let timestamp = new Date().getTime();

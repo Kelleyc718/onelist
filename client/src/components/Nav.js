@@ -12,7 +12,7 @@ class Nav extends Component {
                 <Link to="/playlist">Playlist</Link>
               </li>
               <li className="nav-links">
-                <a href="/api/logout">Logout</a>
+                <a href={"/api/logout"}>Logout</a>
               </li>
           </span>
       );
@@ -35,7 +35,7 @@ class Nav extends Component {
         <nav>
             <div className="nav-wrapper">
                 <Link to="/" className="left brand-logo">OneList</Link>
-                <ul id="mobile-nav" className="right hide-on-small-only">
+                <ul id="mobile-nav" className="right">
                     <li className="nav-links">
                         <Link to="/about">About Us</Link>
                     </li>
@@ -48,7 +48,7 @@ class Nav extends Component {
 }
 
 const mapStateToProps = ({auth}) => {
-  return { auth };
+  return {auth: auth.user};
 };
 
 export default connect(mapStateToProps)(Nav);

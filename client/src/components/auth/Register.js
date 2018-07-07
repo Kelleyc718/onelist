@@ -3,7 +3,7 @@ import {reduxForm, Field} from "redux-form";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {Link} from "react-router-dom";
-import * as actions from "../../actions";
+import * as actions from "../../actions/actionsIndex";
 import "../../css/register.css";
 
 

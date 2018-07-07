@@ -1,4 +1,6 @@
 .login-landing {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -7,6 +9,8 @@
 }
 
 .form {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     width: 50%;
     margin:auto;
@@ -28,10 +32,14 @@
     margin: 0 10px 20px;
     padding: 10px;
     border-radius: 3px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 .btn-text {
+    background-image: -webkit-gradient(linear, left top, right top, from(#12aeeb), color-stop(rgb(66, 153, 242)), color-stop(rgb(126, 125, 232)), color-stop(rgb(176, 87, 201)), to(rgb(209, 21, 150)));
+    background-image: -webkit-linear-gradient(left, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgb(209, 21, 150));
+    background-image: -o-linear-gradient(left, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgb(209, 21, 150));
     background-image: linear-gradient(to right, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgb(209, 21, 150));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

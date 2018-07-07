@@ -3,6 +3,9 @@ nav {
 }
 
 .nav-links, .brand-logo {
+    background-image: -webkit-gradient(linear, left top, right top, from(#12aeeb), color-stop(rgb(66, 153, 242)), color-stop(rgb(126, 125, 232)), color-stop(rgb(176, 87, 201)), to(rgba(209, 21, 150, 0.38)));
+    background-image: -webkit-linear-gradient(left, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgba(209, 21, 150, 0.38));
+    background-image: -o-linear-gradient(left, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgba(209, 21, 150, 0.38));
     background-image: linear-gradient(to right, #12aeeb, rgb(66, 153, 242), rgb(126, 125, 232), rgb(176, 87, 201), rgba(209, 21, 150, 0.38));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -19,4 +22,11 @@ nav {
 
 .nav-links {
     margin-right: 1rem;
+}
+
+@media only screen and (max-width: 750px) {
+    .brand-logo {
+        background: url("../img/logo-ico.svg") no-repeat;
+
+    }
 }

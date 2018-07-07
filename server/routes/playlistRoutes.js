@@ -1,4 +1,3 @@
-const requireLogin = require("../middlewares/requireLogin");
 const mongoose = require("mongoose");
 const promise = require("request-promise");
 require("../models/User");
@@ -9,7 +8,6 @@ const Playlist = mongoose.model("playlist");
 
 module.exports = app => {
   app.get("/api/youtube/playlist", async (req, res) => {
-    console.log(req.user);
     const currentUserPlaylist = await User.findOne(req.user);
     promise({
       uri:
@@ -20,7 +18,7 @@ module.exports = app => {
     }).then(data => res.send(data));
   });
 
-  app.get("/api/spotify/playlist", requireLogin, async (req, res) => {
+  app.get("/api/spotify/playlist", async (req, res) => {
     const currentUser = await User.findOne(req.user);
     const currentUserPlaylist = await Playlist.findOne({
       _user: currentUser
@@ -30,8 +28,10 @@ module.exports = app => {
       headers: {
         Authorization: `Bearer ${currentUserPlaylist.spotify.accessToken}`
       }
-    }).then(data => {
-        res.send(data);
-    })
+    }).then(data => res.send(data))
+        .catch(e => {
+            console.log(e);
+            res.send(e + "Your access token has expired")
+        });
   });
 };

@@ -3,7 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { Link } from "react-router-dom";
-import * as actions from "../../actions";
+import * as actions from "../../actions/actionsIndex";
 import "../../css/login.css";
 
 class Login extends Component {
@@ -50,11 +50,11 @@ class Login extends Component {
                 Cancel
               </Link>
             </button>
-              <button className="button">
-                  <a href={"/auth/google"} className="btn-text">
-                      Sign in with Google
-                  </a>
-              </button>
+            <button type="button">
+              <a href="/auth/google" className="btn-text">
+                Sign in with Google
+              </a>
+            </button>
           </div>
         </form>
       </div>

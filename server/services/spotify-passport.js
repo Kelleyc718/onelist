@@ -15,6 +15,7 @@ const spotifyOptions = {
 const spotify = new SpotifyStrategy(
   spotifyOptions,
   async (accessToken, refreshToken, expires_in, profile, done) => {
+      console.log(profile);
     const existingUser = await User.findOne({
       _user: ObjectId
     });

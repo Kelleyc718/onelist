@@ -26,3 +26,8 @@
     margin: auto;
     padding: 0.6rem;
 }
+
+.playlist-comp {
+    margin: auto;
+    min-width: 400px;
+}

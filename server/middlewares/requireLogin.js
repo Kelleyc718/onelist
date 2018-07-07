@@ -1,3 +1,6 @@
 module.exports = (req, res, next) => {
-    (!req.user) ? res.redirect("/login") : next();
+    console.log(req.user);
+    if (!req.user) {
+        next();
+    }
 };

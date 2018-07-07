@@ -8,12 +8,13 @@ import Landing from "./Landing";
 import Login from "./auth/Login";
 import About from "./About";
 import { connect } from "react-redux";
-import * as actions from "../actions";
+import * as authActions from "../actions/actionsIndex";
 import "../css/app.css";
 
+
 class App extends Component {
-  componentDidMount() {
-    this.props.checkUser();
+  componentWillMount() {
+    this.props.fetchUser();
   }
   render() {
     return (
@@ -35,10 +36,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { auth: state.auth };
+  return state;
 };
 
 export default connect(
   mapStateToProps,
-  actions
+  authActions
 )(App);
