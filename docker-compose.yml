@@ -9,7 +9,7 @@ services:
   server:
     build: ./server
     ports:
-      - "5000:5000"
+      - "6200:6200"
 
   client:
     build: ./client
