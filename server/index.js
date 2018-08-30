@@ -20,12 +20,18 @@ require("./services/passport");
 require("dotenv").config();
 
 // Connection to MongoDB
-mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://mongodb')
+    .then(() => {
+        console.log('Backend Started');
+    })
+    .catch(err => {
+        console.error('Backend error:', err.stack);
+        process.exit(1);
+    });
 
 // Server setup
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6200;
 const server = http.createServer(app);
 
 // Middleware Setup
