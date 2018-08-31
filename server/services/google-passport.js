@@ -8,7 +8,7 @@ require("dotenv").config();
 const googleOptions = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SEC,
-  callbackURL: "/auth/google/callback",
+  callbackURL: `http://${window.location.hostname}:6200/auth/google/callback`,
   access_type: "offline"
 };
 

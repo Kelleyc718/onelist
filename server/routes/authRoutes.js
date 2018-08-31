@@ -38,7 +38,7 @@ module.exports = app => {
   });
 
   // Google passport rules
-  app.get("/auth/google", googleAuth);
+  app.get("http://"+window.location.hostname+":6200/auth/google", googleAuth);
 
   //Callback request to receive the token exchange
   app.get("/auth/google/callback", googleAuth, (req, res) => {

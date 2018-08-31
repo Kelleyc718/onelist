@@ -31,7 +31,7 @@ mongoose.connect('mongodb://mongodb')
 
 // Server setup
 const app = express();
-const port = process.env.PORT || 6200;
+const port = 6200;
 const server = http.createServer(app);
 
 // Middleware Setup

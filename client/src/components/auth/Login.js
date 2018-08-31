@@ -51,9 +51,9 @@ class Login extends Component {
               </Link>
             </button>
             <button type="button">
-              <a href="/auth/google" className="btn-text">
+              <Link to="http://localhost:6200/auth/google" className="btn-text">
                 Sign in with Google
-              </a>
+              </Link>
             </button>
           </div>
         </form>
