@@ -4,11 +4,12 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const Playlist = mongoose.model("playlist");
+const keys = require('../config/keys');
 require("dotenv").config();
 
 const spotifyOptions = {
-  clientID: process.env.SPOTIFY_CLIENT_ID,
-  clientSecret: process.env.SPOTIFY_CLIENT_SEC,
+  clientID: keys.SPOTIFY_CLIENT_ID,
+  clientSecret: keys.SPOTIFY_CLIENT_SEC,
   callbackURL: "/auth/spotify/callback"
 };
 

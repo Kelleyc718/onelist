@@ -4,13 +4,14 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const Playlist = mongoose.model("playlist");
+const keys = require('../config/keys');
 
 require("dotenv").config();
 
 // OAuth2 For Youtube Access
 const youtubeAuthOptions = {
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SEC,
+  clientID: keys.GOOGLE_CLIENT_ID,
+  clientSecret: keys.GOOGLE_CLIENT_SEC,
   callbackURL: "/auth/youtube/callback",
   proxy: true
 };

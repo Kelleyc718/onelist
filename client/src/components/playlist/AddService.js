@@ -35,7 +35,7 @@ class AddService extends Component {
                 </ul>
             </div>
         );
-    }
+    };
 }
 
 export default AddService;

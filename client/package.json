@@ -1,6 +1,14 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:5000/"
+    },
+    "/auth/*": {
+      "target": "http://localhost:5000/"
+    }
+  },
   "dependencies": {
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",

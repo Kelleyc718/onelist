@@ -13,9 +13,6 @@ import "../css/app.css";
 
 
 class App extends Component {
-  componentWillMount() {
-    this.props.fetchUser();
-  }
   render() {
     return (
       <Router>

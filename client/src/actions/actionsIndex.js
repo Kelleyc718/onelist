@@ -19,7 +19,7 @@ import {
 export const fetchUser = () => {
   return async dispatch => {
     dispatch({ type: FETCH_USER_REQUEST, authenticated: false, user: null });
-    await axios.get(`http://${window.location.hostname}:6200/api/current_user`).then(res => {
+    await axios.get('/api/current_user').then(res => {
       if (res.data) {
         dispatch({
           type: FETCH_USER_SUCCESS,
@@ -40,12 +40,13 @@ export const fetchUser = () => {
 // Registers a new user Action
 export const register = (formProps, callback) => async dispatch => {
   try {
-    const res = await axios.post(`http://${window.location.hostname}:6200/api/register`, formProps);
+    const res = await axios.post('/api/register', formProps);
     dispatch({ type: AUTH_USER_SUCCESS, payload: res.data.token });
 
     // Sets users token after successful signup
     // noinspection JSCheckFunctionSignatures
     localStorage.setItem("token", res.data.token);
+    console.log(localStorage.getItem("token"));
     callback();
   } catch (e) {
     dispatch({ type: AUTH_USER_FAILURE, payload: "Email in use" });
@@ -55,7 +56,7 @@ export const register = (formProps, callback) => async dispatch => {
 // Normal login Action for a registered user
 export const login = (formProps, callback) => async dispatch => {
   try {
-    const res = await axios.post(`http://${window.location.hostname}:6200/api/login`, formProps);
+    const res = await axios.post('/api/login', formProps);
 
     dispatch({ type: AUTH_USER_SUCCESS, payload: res.data.token });
 

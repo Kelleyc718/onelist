@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
+const keys = require("./config/keys");
 
 // dB imports
 const mongoose = require("mongoose");
@@ -16,11 +17,8 @@ require("./models/User");
 const passport = require('passport');
 require("./services/passport");
 
-// Environment Variables
-require("dotenv").config();
-
 // Connection to MongoDB
-mongoose.connect('mongodb://mongodb')
+mongoose.connect(keys.MONGOURI)
     .then(() => {
         console.log('Backend Started');
     })
@@ -31,7 +29,6 @@ mongoose.connect('mongodb://mongodb')
 
 // Server setup
 const app = express();
-const port = 6200;
 const server = http.createServer(app);
 
 // Middleware Setup
@@ -41,24 +38,13 @@ app.use(bodyParser.json({}));
 app.use(
     cookieSession({
         maxAge: 60 * 60 * 1000,
-        keys: [process.env.APP_SECRET]
+        keys: [keys.APP_SECRET]
     }));
 app.use(passport.initialize());
 app.use(passport.session());
 require("./routes/authRoutes")(app);
 require("./routes/playlistRoutes")(app);
 
-
-// if (process.env.NODE_ENV === "production") {
-//     // Production assets served for known express routes
-//     app.use(express.static("client/build"));
-//
-//     // Serve Index for routes unknown to Express
-//     app.get("*", (req, res) => {
-//         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-//     });
-// }
-
 // Tell server to listen to the defined port
-server.listen(port);
-console.log("Server listening on " + port);
+server.listen(5000);
+console.log("Server listening on " + 5000);

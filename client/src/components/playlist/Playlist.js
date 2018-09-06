@@ -5,13 +5,6 @@ import * as actions from "../../actions/actionsIndex";
 import "../../css/playlist.css";
 
 class Playlist extends Component {
-  componentDidMount() {
-    if (!this.props.auth.authenticated) {
-      return this.props.errorMessage;
-    }
-    this.props.fetchList();
-  }
-
   onRender() {
     if (this.props.playlist.isFetching) {
       return <div>{this.props.playlist.loadingMessage}</div>;

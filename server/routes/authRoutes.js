@@ -34,11 +34,13 @@ module.exports = app => {
   //Spotify passport rules
   app.get("/auth/spotify", spotifyAuth);
   app.get("/auth/spotify/callback", spotifyAuth, (req, res) => {
+      console.log(req.user);
+      console.log(res);
     res.redirect("/playlist");
   });
 
   // Google passport rules
-  app.get("http://"+window.location.hostname+":6200/auth/google", googleAuth);
+  app.get("/auth/google", googleAuth);
 
   //Callback request to receive the token exchange
   app.get("/auth/google/callback", googleAuth, (req, res) => {

@@ -1,15 +1,16 @@
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const mongoose = require("mongoose");
-const User = mongoose.model("users");
-require("dotenv").config();
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
+const keys = require('../config/keys');
+require('dotenv').config();
 
 // OAuth2.0 options for Google
 const googleOptions = {
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SEC,
-  callbackURL: `http://${window.location.hostname}:6200/auth/google/callback`,
-  access_type: "offline"
+  clientID: keys.GOOGLE_CLIENT_ID,
+  clientSecret: keys.GOOGLE_CLIENT_SEC,
+  callbackURL: '/auth/google/callback',
+  access_type: 'offline'
 };
 
 // Google O2Auth Buisness Logic
@@ -17,7 +18,7 @@ const google = new GoogleStrategy(
   googleOptions,
   async (accessToken, refreshToken, profile, done) => {
     const existingUser = await User.findOne({
-      "serviceTokens.google.profileId" : profile.id
+      'serviceTokens.google.profileId' : profile.id
     });
 
     if (existingUser) {
@@ -26,12 +27,12 @@ const google = new GoogleStrategy(
 
     if (!accessToken) {
       accessToken = null;
-      console.log("no token available");
+      console.log('no token available');
     }
 
     if (!refreshToken) {
       refreshToken = null;
-      console.log("no refresh token available");
+      console.log('no refresh token available');
     }
 
     const user = await new User({
