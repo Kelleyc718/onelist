@@ -5,12 +5,12 @@ import * as actions from "../../actions/actionsIndex";
 import "../../css/playlist.css";
 
 class Playlist extends Component {
-    componentDidMount() {
+    componentDidMount () {
         this.props.fetchSpotify();
         this.props.fetchYoutube();
     }
 
-    renderSpotify() {
+    renderSpotify = () => {
         if (this.props.spotify.lists) {
             return this.props.spotify.lists.items.map(item => {
                 return (
@@ -25,7 +25,7 @@ class Playlist extends Component {
         }
     }
 
-    renderYoutube() {
+    renderYoutube = () => {
         if (this.props.youtube.lists.items) {
             return this.props.youtube.lists.items.map(item => {
                 return (

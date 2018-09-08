@@ -50,7 +50,7 @@ class Login extends Component {
                 Cancel
               </Link>
             </button>
-            <button type="button">
+            <button className="button">
               <a href="/auth/google" className="btn-text">
                 Sign in with Google
               </a>
