@@ -1,10 +1,12 @@
 import {combineReducers} from "redux";
 import {reducer as formReducer} from "redux-form";
 import auth from "./authReducer";
-import playlist from "./playlistsReducer";
+import youtube from "./youtubeReducer";
+import spotify from "./spotifyReducer";
 
 export default combineReducers({
     auth,
-    playlist,
+    youtube,
+    spotify,
     form: formReducer
 });

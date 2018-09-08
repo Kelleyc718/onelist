@@ -6,26 +6,25 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const Playlist = mongoose.model("playlist");
 const keys = require('../config/keys');
 
-require("dotenv").config();
-
 // OAuth2 For Youtube Access
 const youtubeAuthOptions = {
   clientID: keys.GOOGLE_CLIENT_ID,
   clientSecret: keys.GOOGLE_CLIENT_SEC,
   callbackURL: "/auth/youtube/callback",
-  proxy: true
 };
 
 const youtubeAuth = new YoutubeV3Strategy(
   youtubeAuthOptions,
   async (accessToken, refreshToken, profile, done) => {
     try {
+      console.log("Youtube: " + accessToken);
       const existingUser = await User.findOne({ id: ObjectId });
       const existingService = await Playlist.findOne({
           _user : existingUser
       });
 
       if (existingService) {
+        console.log("Youtube: " + existingService);
         await Playlist.update({
           accessToken: accessToken,
           refreshToken: refreshToken

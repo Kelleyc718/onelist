@@ -8,12 +8,16 @@ const Playlist = mongoose.model("playlist");
 
 module.exports = app => {
   app.get("/api/youtube/playlist", async (req, res) => {
-    const currentUserPlaylist = await User.findOne(req.user);
+    const currentUser = await User.findOne(req.user);
+      const currentUserPlaylist = await Playlist.findOne({
+          _user: currentUser
+      });
+    console.log(currentUserPlaylist.youtube.accessToken);
     promise({
       uri:
         "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true",
       headers: {
-        Authorization: `Bearer ${currentUserPlaylist.serviceTokens.google.token}`
+        Authorization: `Bearer ${currentUserPlaylist.youtube.accessToken}`
       }
     }).then(data => res.send(data));
   });

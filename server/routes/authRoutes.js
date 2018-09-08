@@ -54,6 +54,7 @@ module.exports = app => {
   // Youtube Auth Routes
   app.get("/auth/youtube", youtubeAuth);
   app.get("/auth/youtube/callback", youtubeAuth, (req, res) => {
+    console.log(res);
     res.redirect("/playlist");
   });
 
