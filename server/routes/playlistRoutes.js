@@ -13,7 +13,7 @@ module.exports = app => {
       uri:
         "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true",
       headers: {
-        Authorization: `Bearer ${currentUserPlaylist.token}`
+        Authorization: `Bearer ${currentUserPlaylist.serviceTokens.google.token}`
       }
     }).then(data => res.send(data));
   });

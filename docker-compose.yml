@@ -9,7 +9,11 @@ services:
   server:
     build: ./server
     ports:
-      - "6200:3000"
+      - "5000:3000"
+    links:
+      - mongodb
+    depends_on: 
+      - mongodb
 
   client:
     build: ./client

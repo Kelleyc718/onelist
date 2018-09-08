@@ -1,7 +1,7 @@
 import {
-  FETCH_LIST_REQUEST,
-  FETCH_LIST_SUCCESS,
-  FETCH_LIST_FAILURE
+  FETCH_SPOTIFY_REQUEST,
+  FETCH_SPOTIFY_SUCCESS,
+  FETCH_SPOTIFY_FAILURE
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -12,15 +12,15 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_LIST_REQUEST:
+    case FETCH_SPOTIFY_REQUEST:
         console.log("fetching the playlist requested.");
       return {...state, isFetching: true, loadingMessage: "Loading...Thank you for your patience." };
 
-    case FETCH_LIST_SUCCESS:
+    case FETCH_SPOTIFY_SUCCESS:
         console.log("fetching the playlist succeeded.");
       return {...state, isFetching: false, lists: action.payload};
 
-    case FETCH_LIST_FAILURE:
+    case FETCH_SPOTIFY_FAILURE:
         console.log("fetching the playlist failed.");
       return {...state, isFetching: false, lists: "Cannot Find.", errorMessage: "Something went wrong."};
 

@@ -1,12 +1,11 @@
 "use strict";
 const Authentication = require("../middlewares/authentication");
-const requireLogin = require("../middlewares/requireLogin");
 const passport = require("passport");
 require("../services/passport");
 require("../services/google-passport");
 require("../services/youtube-passport");
 require("../services/spotify-passport");
-require("dotenv").config();
+
 
 // Constants defined to protect routes
 const googleAuth = passport.authenticate("google", {

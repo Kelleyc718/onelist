@@ -11,5 +11,5 @@ module.exports = {
     SPOTIFY_CLIENT_ID: '1aa56858630545d4bfa3ae0de924962a',
 
     // MONGODB URI
-    MONGOURI: 'mongodb://admin:password@159.89.148.240:27017/userAuth'
+    MONGOURI: 'mongodb://admin:password123@ds231720.mlab.com:31720/onelist'
 };

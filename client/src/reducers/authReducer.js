@@ -1,4 +1,4 @@
-import {AUTH_USER_SUCCESS, AUTH_USER_FAILURE, FETCH_USER_SUCCESS, FETCH_USER_REQUEST} from "../actions/types";
+import {AUTH_USER_SUCCESS, AUTH_USER_FAILURE, CHECK_USER} from "../actions/types";
 
 const INITIAL_STATE = {
     user: null,
@@ -8,14 +8,10 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case FETCH_USER_REQUEST:
+        case CHECK_USER:
             console.log("user check request in progress");
             console.log("payload: " + action.payload);
             return {...state, isFetching: true, authenticated: false, user: action.payload};
-        case FETCH_USER_SUCCESS:
-            console.log("fetching the user succeeded");
-            console.log("payload: " + action.payload);
-            return {...state, isFetching: false, authenticated: true, user: action.payload};
         case AUTH_USER_SUCCESS:
             console.log("the user is authorized succeeded");
             console.log("payload: " + action.payload);

@@ -5,7 +5,6 @@ const User = mongoose.model("users");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const Playlist = mongoose.model("playlist");
 const keys = require('../config/keys');
-require("dotenv").config();
 
 const spotifyOptions = {
   clientID: keys.SPOTIFY_CLIENT_ID,

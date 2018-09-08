@@ -13,30 +13,33 @@ import "../css/app.css";
 
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="app-container">
-          <Nav />
-          <div className="container">
-            <Route path="/" exact component={Landing} />
-            <Route path="/register" component={Register} />
-            <Route path="/about" component={About} />
-            <Route path="/playlist" component={Playlist} />
-            <Route path="/addservice" component={AddService} />
-            <Route path="/login" component={Login} />
-          </div>
-        </div>
-      </Router>
-    );
-  }
+    componentWillMount() {
+        this.props.checkUser();
+    }
+    render() {
+        return (
+            <Router>
+                <div className="app-container">
+                    <Nav />
+                    <div className="container">
+                        <Route path="/" exact component={Landing} />
+                        <Route path="/register" component={Register} />
+                        <Route path="/about" component={About} />
+                        <Route path="/playlist" component={Playlist} />
+                        <Route path="/addservice" component={AddService} />
+                        <Route path="/login" component={Login} />
+                    </div>
+                </div>
+            </Router>
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  return state;
+    return state;
 };
 
 export default connect(
-  mapStateToProps,
-  authActions
+    mapStateToProps,
+    authActions
 )(App);

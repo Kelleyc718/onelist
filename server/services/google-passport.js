@@ -3,7 +3,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const keys = require('../config/keys');
-require('dotenv').config();
 
 // OAuth2.0 options for Google
 const googleOptions = {
@@ -22,6 +21,7 @@ const google = new GoogleStrategy(
     });
 
     if (existingUser) {
+        console.log(existingUser);
       return done(null, existingUser);
     }
 
