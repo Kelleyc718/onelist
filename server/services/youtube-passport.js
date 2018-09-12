@@ -24,7 +24,6 @@ const youtubeAuth = new YoutubeV3Strategy(
       });
 
       if (existingService) {
-        console.log("Youtube: " + existingService);
         await Playlist.update({
           accessToken: accessToken,
           refreshToken: refreshToken

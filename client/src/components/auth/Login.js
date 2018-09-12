@@ -8,10 +8,12 @@ import "../../css/login.css";
 
 class Login extends Component {
   onSubmit = formProps => {
-    this.props.login(formProps, () => {
-      this.props.history.push("/playlist");
-    });
+      this.props.login(
+        formProps, () => {
+          this.props.history.push("/playlist");
+        });
   };
+  
 
   render() {
     const { handleSubmit } = this.props;
@@ -50,8 +52,8 @@ class Login extends Component {
                 Cancel
               </Link>
             </button>
-            <button className="button">
-              <a href="/auth/google" className="btn-text">
+            <button type="button">
+              <a href="/auth/google" className="btn-text button">
                 Sign in with Google
               </a>
             </button>
@@ -63,9 +65,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    errorMessage: state.auth.errorMessage
-  };
+  return { errorMessage: state.auth.errorMessage };
 };
 
 export default compose(

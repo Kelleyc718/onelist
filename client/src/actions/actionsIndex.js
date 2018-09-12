@@ -3,19 +3,23 @@ import {
   CHECK_USER,
   AUTH_USER_SUCCESS,
   AUTH_USER_FAILURE,
-    FETCH_SPOTIFY_REQUEST,
-    FETCH_SPOTIFY_SUCCESS,
-    FETCH_SPOTIFY_FAILURE,
-    FETCH_YOUTUBE_REQUEST,
-    FETCH_YOUTUBE_SUCCESS,
-    FETCH_YOUTUBE_FAILURE
+  FETCH_SPOTIFY_REQUEST,
+  FETCH_SPOTIFY_SUCCESS,
+  FETCH_SPOTIFY_FAILURE,
+  FETCH_YOUTUBE_REQUEST,
+  FETCH_YOUTUBE_SUCCESS,
+  FETCH_YOUTUBE_FAILURE
 } from "./types";
 
-/***********************************/
-/***********************************/
-/* Auth Action Creators Start Here**/
-/***********************************/
-/***********************************/
+/** ********************************** **/
+/** ********************************** **/
+/** ********      Auth      ********** **/
+/** ********      Action    ********** **/
+/** ********     Creators   ********** **/
+/** ********      Start     ********** **/
+/** ********      Here      ********** **/
+/** ********************************** **/
+/** ********************************** **/
 
 // Check if user is logged in Action
 export const checkUser = () => async dispatch => {

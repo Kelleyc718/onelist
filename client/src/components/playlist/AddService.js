@@ -1,7 +1,6 @@
-import React, {Component} from "react";
+import React from "react";
 
-class AddService extends Component {
-    render() {
+export default AddService => {
         return (
             <div className="playlist-services">
                 <ul className="service-list text-primary">
@@ -35,7 +34,5 @@ class AddService extends Component {
                 </ul>
             </div>
         );
-    };
 }
 
-export default AddService;

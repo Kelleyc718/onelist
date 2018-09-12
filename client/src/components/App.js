@@ -8,7 +8,7 @@ import Landing from "./Landing";
 import Login from "./auth/Login";
 import About from "./About";
 import { connect } from "react-redux";
-import * as authActions from "../actions/actionsIndex";
+import * as actions from "../actions/actionsIndex";
 import "../css/app.css";
 
 
@@ -41,5 +41,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    authActions
+    actions
 )(App);

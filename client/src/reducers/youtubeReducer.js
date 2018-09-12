@@ -5,7 +5,7 @@ import {
 } from "../actions/types";
 
 const INITIAL_STATE = {
-  lists: "",
+  list: "",
   errorMessage: "",
   isFetching: true
 };
@@ -18,11 +18,11 @@ export default (state = INITIAL_STATE, action) => {
 
       case FETCH_YOUTUBE_SUCCESS:
           console.log("fetching the playlist succeeded.");
-          return {...state, isFetching: false, lists: action.payload};
+          return {...state, isFetching: false, list: action.payload};
 
       case FETCH_YOUTUBE_FAILURE:
           console.log("fetching the playlist failed.");
-          return {...state, isFetching: false, lists: "Cannot Find.", errorMessage: "Something went wrong."};
+          return {...state, isFetching: false, list: "Cannot Find.", errorMessage: "Something went wrong."};
 
     default:
       return state;

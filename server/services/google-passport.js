@@ -21,13 +21,11 @@ const google = new GoogleStrategy(
     });
 
     if (existingUser) {
-        console.log(existingUser);
       return done(null, existingUser);
     }
 
     if (!accessToken) {
       accessToken = null;
-      console.log('no token available');
     }
 
     if (!refreshToken) {
@@ -42,7 +40,7 @@ const google = new GoogleStrategy(
           profileId: profile.id,
           token: accessToken,
           refresh_token: refreshToken,
-          expires_in: 1000 * 60 * 60
+          expires_in: 1440000
         }
       }
     }).save();
@@ -51,3 +49,6 @@ const google = new GoogleStrategy(
 );
 
 passport.use(google);
+
+
+// 1440000ms a day
